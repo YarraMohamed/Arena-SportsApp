@@ -11,7 +11,7 @@ class LeaguesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var searchController : UISearchController?
-    let leagues = ["Premier League", "La Liga", "Ligue 1", "Serie A", "Copa America"]
+    let leagues = ["Premier League", "La Liga", "Ligue 1", "Serie A", "World Cup", "Ligue 2"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,7 +56,7 @@ extension LeaguesViewController : UITableViewDataSource{
 
 extension LeaguesViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 140
     }
     
 }

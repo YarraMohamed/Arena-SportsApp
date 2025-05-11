@@ -45,7 +45,7 @@ class LeagueCell: UITableViewCell {
         leagueImageView.layer.cornerRadius = leagueImageView.frame.width / 2
         leagueImageView.clipsToBounds = true
        
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 10, bottom: 20, right: 0))
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0))
     
     }
 }
