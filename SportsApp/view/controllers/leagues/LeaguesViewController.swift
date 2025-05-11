@@ -15,7 +15,7 @@ class LeaguesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Football Leagues"
+        title = "Leagues"
         tableView.dataSource = self
         tableView.delegate = self
 //        setupSearchController()
