@@ -188,11 +188,94 @@
             </objects>
             <point key="canvasLocation" x="882.08955223880594" y="564.98855835240272"/>
         </scene>
+        <!--Leagues View Controller-->
+        <scene sceneID="fRX-h5-ndU">
+            <objects>
+                <viewController storyboardIdentifier="leaguesVC" id="ubC-Wg-Ab9" customClass="LeaguesViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LjY-EB-o5X">
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9MU-PJ-3pK">
+                                <rect key="frame" x="0.0" y="164" width="402" height="642"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="leagueCell" rowHeight="103" id="yVQ-s8-sf3" customClass="LeagueCell" customModule="SportsApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="402" height="103"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yVQ-s8-sf3" id="d9I-37-kl0">
+                                            <rect key="frame" x="0.0" y="0.0" width="402" height="103"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premierLeagueLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Iy4-uw-ZDw">
+                                                    <rect key="frame" x="10" y="0.0" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Iy4-uw-ZDw" secondAttribute="height" multiplier="1:1" id="Ugv-z4-Jop"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Premier League" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGP-4W-LcA">
+                                                    <rect key="frame" x="107.99999999999999" y="16" width="147.66666666666663" height="24"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Liverpool" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clv-gU-ETq">
+                                                    <rect key="frame" x="108" y="50" width="84.666666666666686" height="19.666666666666671"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="pPb-c2-W51">
+                                                    <rect key="frame" x="336" y="39" width="25" height="25"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="pPb-c2-W51" firstAttribute="centerY" secondItem="d9I-37-kl0" secondAttribute="centerY" id="AHC-8J-PtE"/>
+                                                <constraint firstAttribute="bottom" secondItem="Iy4-uw-ZDw" secondAttribute="bottom" constant="23" id="GXg-Tl-YFH"/>
+                                                <constraint firstItem="clv-gU-ETq" firstAttribute="leading" secondItem="AGP-4W-LcA" secondAttribute="leading" id="Hqs-ZG-rsI"/>
+                                                <constraint firstItem="clv-gU-ETq" firstAttribute="top" secondItem="AGP-4W-LcA" secondAttribute="bottom" constant="10" id="OhU-WQ-qjp"/>
+                                                <constraint firstItem="Iy4-uw-ZDw" firstAttribute="top" secondItem="d9I-37-kl0" secondAttribute="top" id="U23-vG-t10"/>
+                                                <constraint firstItem="AGP-4W-LcA" firstAttribute="leading" secondItem="Iy4-uw-ZDw" secondAttribute="trailing" priority="750" constant="18" id="Zya-Jf-8NI"/>
+                                                <constraint firstItem="AGP-4W-LcA" firstAttribute="top" secondItem="d9I-37-kl0" secondAttribute="top" constant="16" id="fPd-jc-ltX"/>
+                                                <constraint firstItem="pPb-c2-W51" firstAttribute="top" secondItem="d9I-37-kl0" secondAttribute="topMargin" constant="27" id="fnI-vR-kby"/>
+                                                <constraint firstItem="Iy4-uw-ZDw" firstAttribute="leading" secondItem="d9I-37-kl0" secondAttribute="leading" constant="10" id="iT8-8f-Okd"/>
+                                                <constraint firstItem="pPb-c2-W51" firstAttribute="width" secondItem="d9I-37-kl0" secondAttribute="height" multiplier="25:103" id="izS-MQ-0jr"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="pPb-c2-W51" secondAttribute="trailing" constant="21" id="sXC-vH-6G8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="leagueImageView" destination="Iy4-uw-ZDw" id="RoZ-Fp-4nC"/>
+                                            <outlet property="leagueTitleLabel" destination="AGP-4W-LcA" id="bj8-S5-fdN"/>
+                                            <outlet property="leagueTopTeamLabel" destination="clv-gU-ETq" id="lWY-Xg-7aL"/>
+                                            <outlet property="starImageView" destination="pPb-c2-W51" id="6hf-gc-oTh"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Eg8-8l-SCo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9MU-PJ-3pK" firstAttribute="bottom" secondItem="Eg8-8l-SCo" secondAttribute="bottom" id="D5v-MT-5el"/>
+                            <constraint firstItem="9MU-PJ-3pK" firstAttribute="top" secondItem="Eg8-8l-SCo" secondAttribute="top" constant="40" id="d4o-ha-1O1"/>
+                            <constraint firstItem="9MU-PJ-3pK" firstAttribute="leading" secondItem="Eg8-8l-SCo" secondAttribute="leading" id="gPf-KO-Dbe"/>
+                            <constraint firstItem="9MU-PJ-3pK" firstAttribute="centerX" secondItem="LjY-EB-o5X" secondAttribute="centerX" id="rix-2y-69z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="9MU-PJ-3pK" id="HlV-96-hD0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kNK-Ix-h8r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2606" y="-235"/>
+        </scene>
     </scenes>
     <color key="tintColor" red="0.44705885649999999" green="0.43921568989999998" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
         <image name="favourite" width="35" height="35"/>
+        <image name="premierLeagueLogo" width="1000" height="563"/>
         <image name="sports" width="40" height="40"/>
+        <image name="star" width="100" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -83,5 +83,8 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,
         return UIEdgeInsets(top: 50, left: 16, bottom: 50, right: 16)
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "leaguesVC") as! LeaguesViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
