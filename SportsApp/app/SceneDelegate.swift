@@ -13,18 +13,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        let primaryColor = UIColor(named: "PrimaryColor") ?? .systemBlue
+        let primaryColor = UIColor(named: "primaryColor") ?? #colorLiteral(red: 0.4487758875, green: 0.4389013052, blue: 0.9776882529, alpha: 1)
 
         UINavigationBar.appearance().tintColor = primaryColor
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: primaryColor]
         UITabBar.appearance().tintColor = primaryColor
         UIButton.appearance().tintColor = primaryColor
 
+        let hasSeenOnboarding = UserDefaults.standard.bool(forKey: "hasSeenOnboarding")
+        
+        if hasSeenOnboarding {
+            goToMainView()
+        }else{
+            goToOnBoardingView()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
