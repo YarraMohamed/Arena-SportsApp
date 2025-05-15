@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="landscape" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Nrg-Sn-rC6" customClass="ComingMatches" customModule="Arena" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="330" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="teW-8m-00p">
+                <rect key="frame" x="0.0" y="0.0" width="330" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="UNw-Ur-QJ5">
+                        <rect key="frame" x="0.0" y="0.0" width="330" height="200"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team1" translatesAutoresizingMaskIntoConstraints="NO" id="Spf-lt-gk3">
+                        <rect key="frame" x="20" y="60" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="EkH-mS-78H"/>
+                            <constraint firstAttribute="height" constant="80" id="dui-c7-oSr"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team2" translatesAutoresizingMaskIntoConstraints="NO" id="CVA-BA-aRY">
+                        <rect key="frame" x="230" y="60" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="g24-hu-7e7"/>
+                            <constraint firstAttribute="height" constant="80" id="hSo-01-ng7"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slc-Mc-RCr">
+                        <rect key="frame" x="144.66666666666666" y="40" width="41" height="43.666666666666657"/>
+                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
+                        <color key="textColor" red="0.44705885649999999" green="0.43921568989999998" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2025-05-18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vsc-0M-M1c">
+                        <rect key="frame" x="120.66666666666669" y="98.666666666666671" width="89" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKr-2u-jT0">
+                        <rect key="frame" x="144.66666666666666" y="123.66666666666669" width="41" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Vsc-0M-M1c" firstAttribute="top" secondItem="slc-Mc-RCr" secondAttribute="bottom" constant="15" id="20m-hR-GP6"/>
+                    <constraint firstItem="UNw-Ur-QJ5" firstAttribute="height" secondItem="teW-8m-00p" secondAttribute="height" id="7Na-eJ-c6p"/>
+                    <constraint firstItem="zKr-2u-jT0" firstAttribute="centerX" secondItem="teW-8m-00p" secondAttribute="centerX" id="C4r-rA-8lV"/>
+                    <constraint firstItem="UNw-Ur-QJ5" firstAttribute="leading" secondItem="teW-8m-00p" secondAttribute="leading" id="DuG-0a-4hi"/>
+                    <constraint firstItem="slc-Mc-RCr" firstAttribute="top" secondItem="teW-8m-00p" secondAttribute="top" constant="40" id="FyC-pd-6sU"/>
+                    <constraint firstItem="Spf-lt-gk3" firstAttribute="leading" secondItem="teW-8m-00p" secondAttribute="leading" constant="20" id="G0b-b3-k9c"/>
+                    <constraint firstItem="Vsc-0M-M1c" firstAttribute="centerX" secondItem="teW-8m-00p" secondAttribute="centerX" id="GtI-3w-7Se"/>
+                    <constraint firstAttribute="trailing" secondItem="CVA-BA-aRY" secondAttribute="trailing" constant="20" id="TO7-He-MOh"/>
+                    <constraint firstItem="zKr-2u-jT0" firstAttribute="top" secondItem="Vsc-0M-M1c" secondAttribute="bottom" constant="5" id="e92-C1-mPI"/>
+                    <constraint firstItem="Spf-lt-gk3" firstAttribute="centerY" secondItem="UNw-Ur-QJ5" secondAttribute="centerY" id="hEk-qJ-gmg"/>
+                    <constraint firstItem="CVA-BA-aRY" firstAttribute="centerY" secondItem="teW-8m-00p" secondAttribute="centerY" id="jpn-5y-07p"/>
+                    <constraint firstItem="UNw-Ur-QJ5" firstAttribute="width" secondItem="teW-8m-00p" secondAttribute="width" id="lln-OM-hiN"/>
+                    <constraint firstItem="slc-Mc-RCr" firstAttribute="centerX" secondItem="teW-8m-00p" secondAttribute="centerX" id="p64-Nk-6eN"/>
+                    <constraint firstItem="UNw-Ur-QJ5" firstAttribute="top" secondItem="teW-8m-00p" secondAttribute="top" id="w6E-Ux-BOo"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="141" height="126"/>
+            <connections>
+                <outlet property="teamOneImg" destination="Spf-lt-gk3" id="7Uy-nc-r8j"/>
+                <outlet property="teamTwoImg" destination="CVA-BA-aRY" id="DgX-RK-ciK"/>
+                <outlet property="time" destination="Vsc-0M-M1c" id="Fbr-db-YFu"/>
+            </connections>
+            <point key="canvasLocation" x="73" y="-141"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="background" width="329" height="152"/>
+        <image name="team1" width="60" height="60"/>
+        <image name="team2" width="50" height="50"/>
+    </resources>
+</document>
