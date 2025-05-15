@@ -9,15 +9,22 @@ import UIKit
 
 class FavouritesCell: UITableViewCell {
 
+    @IBOutlet weak var favLabel: UILabel!
+    @IBOutlet weak var favImg: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        favImg.layer.cornerRadius = 40
+        favImg.clipsToBounds = true
     }
 
 }
