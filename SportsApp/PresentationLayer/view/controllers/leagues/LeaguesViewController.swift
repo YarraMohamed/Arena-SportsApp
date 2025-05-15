@@ -59,6 +59,12 @@ extension LeaguesViewController : UITableViewDelegate{
         return 140
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "matchesScreen") as! MatchesCollectionViewController
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 extension LeaguesViewController : LeagueCellDelegate{

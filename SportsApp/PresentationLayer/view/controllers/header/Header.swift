@@ -10,6 +10,4 @@ import UIKit
 class Header: UIView {
 
     @IBOutlet weak var label: UILabel!
-    
-
 }
