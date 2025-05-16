@@ -14,8 +14,10 @@ private let pastMatchesReuseIdentifier = "pastMatches"
 class MatchesCollectionViewController: UICollectionViewController,
                                        UICollectionViewDelegateFlowLayout{
     
-    let sectionTitles = ["Upcoming Matches", "Past Matches", "Teams"]
-
+    private let sectionTitles = ["Upcoming Matches", "Past Matches", "Teams"]
+    var selectedLeagueTitle : String?
+    var presenter = MatchesPresenter(fixturesUsecase: FetchFixtures(repo: FixturesRepository(service: FixturesService())))
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,9 +28,16 @@ class MatchesCollectionViewController: UICollectionViewController,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: SectionHeader.reuseIdentifier)
         
-        self.navigationItem.title = "Matches"
+        self.navigationItem.title = selectedLeagueTitle ?? ""
+        
+        presenter.setTableView(self)
+        presenter.getData()
         
         setupLayout()
+    }
+    
+    func renderView(result:FixturesResponse?){
+        print("\(result?.result.count)")
     }
     
     // MARK: UICollectionViewDataSource
@@ -88,13 +97,6 @@ class MatchesCollectionViewController: UICollectionViewController,
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 30)
-    }
-
 }
 
 extension MatchesCollectionViewController {
@@ -113,7 +115,7 @@ extension MatchesCollectionViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 0)
     
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                heightDimension: .absolute(30))
+                                                heightDimension: .absolute(10))
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
             elementKind: UICollectionView.elementKindSectionHeader,
@@ -142,7 +144,7 @@ extension MatchesCollectionViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
            
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                heightDimension: .absolute(30))
+                                                heightDimension: .absolute(10))
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
             elementKind: UICollectionView.elementKindSectionHeader,

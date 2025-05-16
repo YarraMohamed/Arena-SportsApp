@@ -61,6 +61,7 @@ extension LeaguesViewController : UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "matchesScreen") as! MatchesCollectionViewController
+        vc.selectedLeagueTitle = leagues[indexPath.row]
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
