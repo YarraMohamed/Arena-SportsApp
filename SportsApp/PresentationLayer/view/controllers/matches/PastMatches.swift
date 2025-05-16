@@ -25,11 +25,11 @@ class PastMatches: UICollectionViewCell {
         
         teamTwoImg.layer.cornerRadius = teamTwoImg.frame.width / 2
         teamTwoImg.layer.masksToBounds = true
-        
-        self.layer.borderWidth = 1
-        self.layer.borderColor = #colorLiteral(red: 0.4487758875, green: 0.4389013052, blue: 0.9776882529, alpha: 1)
-        self.layer.masksToBounds = true
+
         self.layer.cornerRadius = 10
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderWidth = 0.2
+        self.layer.masksToBounds = true
     
     }
     

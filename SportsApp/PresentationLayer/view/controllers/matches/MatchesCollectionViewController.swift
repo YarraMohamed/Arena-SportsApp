@@ -10,14 +10,23 @@ import UIKit
 private let comingMatchesReuseIdentifier = "coming"
 private let pastMatchesReuseIdentifier = "pastMatches"
 
+
 class MatchesCollectionViewController: UICollectionViewController,
                                        UICollectionViewDelegateFlowLayout{
+    
+    let sectionTitles = ["Upcoming Matches", "Past Matches", "Teams"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.register(UINib(nibName: "ComingMatches", bundle: nil), forCellWithReuseIdentifier: comingMatchesReuseIdentifier)
         collectionView.register(UINib(nibName: "PastMatches", bundle: nil), forCellWithReuseIdentifier: pastMatchesReuseIdentifier)
+        
+        collectionView.register(SectionHeader.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: SectionHeader.reuseIdentifier)
+        
+        self.navigationItem.title = "Matches"
         
         setupLayout()
     }
@@ -31,9 +40,9 @@ class MatchesCollectionViewController: UICollectionViewController,
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0 :
-            return 4
-        default :
             return 2
+        default :
+            return 3
         }
     }
 
@@ -52,6 +61,21 @@ class MatchesCollectionViewController: UICollectionViewController,
         return cell
     }
 
+    override func collectionView(_ collectionView: UICollectionView,
+                                 viewForSupplementaryElementOfKind kind: String,
+                                 at indexPath: IndexPath) -> UICollectionReusableView {
+
+        if kind == UICollectionView.elementKindSectionHeader {
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                              withReuseIdentifier: SectionHeader.reuseIdentifier,
+                                                                              for: indexPath) as! SectionHeader
+            headerView.label.text = sectionTitles[indexPath.section]
+            return headerView
+        }
+
+        return UICollectionReusableView()
+    }
+    
     // MARK: UICollectionViewDelegate
 
 
@@ -63,6 +87,12 @@ class MatchesCollectionViewController: UICollectionViewController,
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 30)
     }
 
 }
@@ -82,6 +112,17 @@ extension MatchesCollectionViewController {
         section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 0)
     
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                heightDimension: .absolute(30))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        
+        section.boundarySupplementaryItems = [header]
+
+        
         return section
     }
 }
@@ -100,6 +141,15 @@ extension MatchesCollectionViewController {
         let section = NSCollectionLayoutSection(group: myGroup)
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
            
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                heightDimension: .absolute(30))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        section.boundarySupplementaryItems = [header]
+
         return section
        }
     
