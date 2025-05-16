@@ -16,6 +16,7 @@ class MatchesCollectionViewController: UICollectionViewController,
     
     private let sectionTitles = ["Upcoming Matches", "Past Matches", "Teams"]
     var selectedLeagueTitle : String?
+    var presenter = MatchesPresenter(fixturesUsecase: FetchFixtures(repo: FixturesRepository(service: FixturesService())))
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,14 @@ class MatchesCollectionViewController: UICollectionViewController,
         
         self.navigationItem.title = selectedLeagueTitle ?? ""
         
+        presenter.setTableView(self)
+        presenter.getData()
+        
         setupLayout()
+    }
+    
+    func renderView(result:FixturesResponse?){
+        print("\(result?.result.count)")
     }
     
     // MARK: UICollectionViewDataSource
