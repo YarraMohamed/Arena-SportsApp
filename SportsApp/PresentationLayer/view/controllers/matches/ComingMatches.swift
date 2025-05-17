@@ -11,6 +11,7 @@ import Kingfisher
 
 class ComingMatches: UICollectionViewCell {
 
+    @IBOutlet weak var vsLabel: UILabel!
     @IBOutlet weak var teamOneImg: UIImageView!
     @IBOutlet weak var teamTwoImg: UIImageView!
     @IBOutlet weak var time: UILabel!
@@ -18,10 +19,10 @@ class ComingMatches: UICollectionViewCell {
     
     private let shimmerOne = ShimmeringView()
     private let shimmerTwo = ShimmeringView()
+    private var shimmerView : ShimmeringView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupShimmer()
     }
     
     override func layoutSubviews() {
@@ -29,33 +30,53 @@ class ComingMatches: UICollectionViewCell {
         teamOneImg.layer.masksToBounds = true
         
         teamTwoImg.layer.cornerRadius = 10
-        teamOneImg.layer.masksToBounds = true
+        teamTwoImg.layer.masksToBounds = true
         
         self.layer.masksToBounds = true
     }
 
-    private func setupShimmer() {
-           shimmerOne.frame = teamOneImg.bounds
-           shimmerOne.contentView = UIImageView(image: UIImage(named: "grey"))
-           teamOneImg.addSubview(shimmerOne)
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        stopShimmer()
+        shimmerOne.removeFromSuperview()
+        shimmerTwo.removeFromSuperview()
+    }
+
+    func setTeamImages(homeURL: URL?, awayURL: URL?) {
+        shimmerOne.isShimmering = true
+        shimmerTwo.isShimmering = true
            
-           shimmerTwo.frame = teamTwoImg.bounds
-           shimmerTwo.contentView = UIImageView(image: UIImage(named: "grey"))
-           teamTwoImg.addSubview(shimmerTwo)
-       }
-       
-       func setTeamImages(homeURL: URL?, awayURL: URL?) {
-           shimmerOne.isShimmering = true
-           shimmerTwo.isShimmering = true
+        teamOneImg.kf.setImage(with: homeURL, placeholder: nil, options: nil, progressBlock: nil) { [weak self] result in
+            self?.shimmerOne.isShimmering = false
+            self?.shimmerOne.removeFromSuperview()
+        }
            
-           teamOneImg.kf.setImage(with: homeURL, placeholder: nil, options: nil, progressBlock: nil) { [weak self] result in
-               self?.shimmerOne.isShimmering = false
-               self?.shimmerOne.removeFromSuperview()
-           }
-           
-           teamTwoImg.kf.setImage(with: awayURL, placeholder: nil, options: nil, progressBlock: nil) { [weak self] result in
-               self?.shimmerTwo.isShimmering = false
-               self?.shimmerTwo.removeFromSuperview()
-           }
-       }
+        teamTwoImg.kf.setImage(with: awayURL, placeholder: nil, options: nil, progressBlock: nil) { [weak self] result in
+            self?.shimmerTwo.isShimmering = false
+            self?.shimmerTwo.removeFromSuperview()
+        }
+    }
+    
+    func startShimmeringAll() {
+        let shimmerView = ShimmeringView(frame: self.bounds)
+        let placeholderView = UIView(frame: self.bounds)
+        placeholderView.backgroundColor = .lightGray
+        placeholderView.layer.cornerRadius = 10
+        placeholderView.layer.masksToBounds = true
+
+        shimmerView.contentView = placeholderView
+        shimmerView.isShimmering = true
+
+        self.addSubview(shimmerView)
+        self.sendSubviewToBack(shimmerView)
+        
+        self.shimmerView = shimmerView
+    }
+
+    func stopShimmer() {
+        shimmerView?.isShimmering = false
+        shimmerView?.removeFromSuperview()
+        shimmerView = nil
+    }
 }

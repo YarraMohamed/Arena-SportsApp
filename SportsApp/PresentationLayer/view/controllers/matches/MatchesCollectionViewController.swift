@@ -20,6 +20,9 @@ class MatchesCollectionViewController: UICollectionViewController,
     private let sectionTitles = ["Upcoming Matches", "Past Matches", "Teams"]
     private var comingMatches = [Fixtures]()
     private var pastMatches = [Fixtures]()
+    private var isLoadingComingMatches = true
+    private var isLoadingPastMatches = true
+
     
     var selectedLeagueTitle : String?
     var presenter = MatchesPresenter(fixturesUsecase: FetchFixtures(repo: FixturesRepository(service: FixturesService())))
@@ -47,6 +50,7 @@ class MatchesCollectionViewController: UICollectionViewController,
     
     func renderUpcomingMatches(result: FixturesResponse?) {
         DispatchQueue.main.async {
+            self.isLoadingComingMatches = false
             self.comingMatches = result?.result ?? []
             self.collectionView.reloadData()
         }
@@ -54,6 +58,7 @@ class MatchesCollectionViewController: UICollectionViewController,
     
     func renderPastMatches(result: FixturesResponse?) {
         DispatchQueue.main.async {
+            self.isLoadingPastMatches = false
             self.pastMatches = result?.result ?? []
             self.collectionView.reloadData()
         }
@@ -68,9 +73,9 @@ class MatchesCollectionViewController: UICollectionViewController,
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0 :
-            return comingMatches.count
+            return isLoadingComingMatches ? 1 : comingMatches.count
         case 1:
-            return pastMatches.count
+            return isLoadingPastMatches ? 1 :  pastMatches.count
         default :
             return 4
         }
@@ -81,20 +86,39 @@ class MatchesCollectionViewController: UICollectionViewController,
         switch indexPath.section {
         case 0 :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: comingMatchesReuseIdentifier, for: indexPath) as! ComingMatches
-            cell.date.text = comingMatches[indexPath.row].event_date
-            cell.time.text = comingMatches[indexPath.row].event_time
-            let homeLogoURL = URL(string: comingMatches[indexPath.row].home_team_logo)
-            let awayLogoURL = URL(string: comingMatches[indexPath.row].away_team_logo)
-            cell.setTeamImages(homeURL: homeLogoURL, awayURL: awayLogoURL)
+            if isLoadingComingMatches {
+                cell.startShimmeringAll()
+                cell.date.text = ""
+                cell.time.text = ""
+                cell.vsLabel.text = ""
+            }else{
+                cell.stopShimmer()
+                cell.vsLabel.text = "VS"
+                cell.date.text = comingMatches[indexPath.row].event_date
+                cell.time.text = comingMatches[indexPath.row].event_time
+                let homeLogoURL = URL(string: comingMatches[indexPath.row].home_team_logo)
+                let awayLogoURL = URL(string: comingMatches[indexPath.row].away_team_logo)
+                cell.setTeamImages(homeURL: homeLogoURL, awayURL: awayLogoURL)
+            }
             return cell
             
         case 1 :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pastMatchesReuseIdentifier, for: indexPath) as! PastMatches
-            cell.date.text = pastMatches[indexPath.row].event_date
-            cell.time.text = pastMatches[indexPath.row].event_time
-            let homeLogoURL = URL(string: pastMatches[indexPath.row].home_team_logo)
-            let awayLogoURL = URL(string: pastMatches[indexPath.row].away_team_logo)
-            cell.setTeamImages(homeURL: homeLogoURL, awayURL: awayLogoURL)
+            if isLoadingPastMatches {
+                cell.startShimmeringAll()
+                cell.date.text = ""
+                cell.time.text = ""
+                cell.score.text = ""
+                cell.vsLabel.text = ""
+            }else{
+                cell.stopShimmer()
+                cell.vsLabel.text = "VS"
+                cell.date.text = pastMatches[indexPath.row].event_date
+                cell.time.text = pastMatches[indexPath.row].event_time
+                let homeLogoURL = URL(string: pastMatches[indexPath.row].home_team_logo)
+                let awayLogoURL = URL(string: pastMatches[indexPath.row].away_team_logo)
+                cell.setTeamImages(homeURL: homeLogoURL, awayURL: awayLogoURL)
+            }
             return cell
             
         default:
@@ -229,7 +253,6 @@ extension MatchesCollectionViewController{
             bottom: 10,
             trailing: 10
         )
-        
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
             heightDimension: .absolute(40))

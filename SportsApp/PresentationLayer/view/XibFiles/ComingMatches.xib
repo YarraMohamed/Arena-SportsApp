@@ -19,14 +19,14 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="UNw-Ur-QJ5">
                         <rect key="frame" x="0.0" y="0.0" width="330" height="200"/>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team1" translatesAutoresizingMaskIntoConstraints="NO" id="Spf-lt-gk3">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Spf-lt-gk3">
                         <rect key="frame" x="20" y="60" width="80" height="80"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="EkH-mS-78H"/>
                             <constraint firstAttribute="height" constant="80" id="dui-c7-oSr"/>
                         </constraints>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team2" translatesAutoresizingMaskIntoConstraints="NO" id="CVA-BA-aRY">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CVA-BA-aRY">
                         <rect key="frame" x="230" y="60" width="80" height="80"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="g24-hu-7e7"/>
@@ -75,13 +75,12 @@
                 <outlet property="teamOneImg" destination="Spf-lt-gk3" id="7Uy-nc-r8j"/>
                 <outlet property="teamTwoImg" destination="CVA-BA-aRY" id="DgX-RK-ciK"/>
                 <outlet property="time" destination="zKr-2u-jT0" id="c5o-G9-pYZ"/>
+                <outlet property="vsLabel" destination="slc-Mc-RCr" id="nTl-5f-wJM"/>
             </connections>
             <point key="canvasLocation" x="73" y="-141"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="background" width="329" height="152"/>
-        <image name="team1" width="60" height="60"/>
-        <image name="team2" width="50" height="50"/>
     </resources>
 </document>
