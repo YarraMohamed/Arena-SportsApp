@@ -71,9 +71,10 @@
             </collectionViewCellContentView>
             <size key="customSize" width="141" height="126"/>
             <connections>
+                <outlet property="date" destination="Vsc-0M-M1c" id="2Mt-DH-iIX"/>
                 <outlet property="teamOneImg" destination="Spf-lt-gk3" id="7Uy-nc-r8j"/>
                 <outlet property="teamTwoImg" destination="CVA-BA-aRY" id="DgX-RK-ciK"/>
-                <outlet property="time" destination="Vsc-0M-M1c" id="Fbr-db-YFu"/>
+                <outlet property="time" destination="zKr-2u-jT0" id="c5o-G9-pYZ"/>
             </connections>
             <point key="canvasLocation" x="73" y="-141"/>
         </collectionViewCell>
