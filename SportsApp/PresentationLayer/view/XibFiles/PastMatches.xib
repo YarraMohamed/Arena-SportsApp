@@ -16,14 +16,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="330" height="160"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team2" translatesAutoresizingMaskIntoConstraints="NO" id="biD-Db-hLv">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="biD-Db-hLv">
                         <rect key="frame" x="250" y="50" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="6Q5-2l-jR4"/>
                             <constraint firstAttribute="height" constant="60" id="toL-9b-8vy"/>
                         </constraints>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team1" translatesAutoresizingMaskIntoConstraints="NO" id="HCQ-B6-Ox7">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HCQ-B6-Ox7">
                         <rect key="frame" x="20" y="50" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="Bhq-gq-e4c"/>
@@ -76,12 +76,9 @@
                 <outlet property="teamOneImg" destination="HCQ-B6-Ox7" id="5MH-AO-1VE"/>
                 <outlet property="teamTwoImg" destination="biD-Db-hLv" id="Z2K-SA-qxd"/>
                 <outlet property="time" destination="6zE-NG-nPy" id="q3t-GG-3wC"/>
+                <outlet property="vsLabel" destination="XdE-FV-UvD" id="wT4-4s-CFh"/>
             </connections>
             <point key="canvasLocation" x="-29.007633587786259" y="-188.02816901408451"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="team1" width="60" height="60"/>
-        <image name="team2" width="50" height="50"/>
-    </resources>
 </document>
