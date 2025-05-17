@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1490FFF2DD8FE2300934499 /* ShimmerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C1490FFE2DD8FE2300934499 /* ShimmerSwift */; };
+		C14910022DD8FE3100934499 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C14910012DD8FE3100934499 /* Kingfisher */; };
 		C1F5ECA92DD7F3820032FFF3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C1F5ECA82DD7F3820032FFF3 /* Alamofire */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C14910022DD8FE3100934499 /* Kingfisher in Frameworks */,
+				C1490FFF2DD8FE2300934499 /* ShimmerSwift in Frameworks */,
 				C1F5ECA92DD7F3820032FFF3 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +88,8 @@
 			name = Arena;
 			packageProductDependencies = (
 				C1F5ECA82DD7F3820032FFF3 /* Alamofire */,
+				C1490FFE2DD8FE2300934499 /* ShimmerSwift */,
+				C14910012DD8FE3100934499 /* Kingfisher */,
 			);
 			productName = SportsApp;
 			productReference = C1ADB9CF2DD0DD1E007E8E35 /* Arena.app */;
@@ -115,6 +121,8 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				C1F5ECA72DD7F3820032FFF3 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C1490FFD2DD8FE2300934499 /* XCRemoteSwiftPackageReference "ShimmerSwift" */,
+				C14910002DD8FE3100934499 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C1ADB9D02DD0DD1E007E8E35 /* Products */;
@@ -344,6 +352,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C1490FFD2DD8FE2300934499 /* XCRemoteSwiftPackageReference "ShimmerSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BeauNouvelle/ShimmerSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+		C14910002DD8FE3100934499 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.3.2;
+			};
+		};
 		C1F5ECA72DD7F3820032FFF3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -355,6 +379,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C1490FFE2DD8FE2300934499 /* ShimmerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1490FFD2DD8FE2300934499 /* XCRemoteSwiftPackageReference "ShimmerSwift" */;
+			productName = ShimmerSwift;
+		};
+		C14910012DD8FE3100934499 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C14910002DD8FE3100934499 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		C1F5ECA82DD7F3820032FFF3 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C1F5ECA72DD7F3820032FFF3 /* XCRemoteSwiftPackageReference "Alamofire" */;

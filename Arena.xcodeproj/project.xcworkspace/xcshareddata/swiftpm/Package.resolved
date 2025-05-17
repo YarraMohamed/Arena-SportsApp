@@ -1,5 +1,5 @@
 {
-  "originHash" : "e8f130fe30ac6cdc940ef06ee1e8535e9f46ffee6aeead1722b9525562f6ce08",
+  "originHash" : "21a78e76ffb74619ab8a2b4e5404e7fcf22d7d3cae64f61d2e531f98f1e03916",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -8,6 +8,24 @@
       "state" : {
         "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
         "version" : "5.10.2"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "7deda23bbdca612076c5c315003d8638a08ed0f1",
+        "version" : "8.3.2"
+      }
+    },
+    {
+      "identity" : "shimmerswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BeauNouvelle/ShimmerSwift",
+      "state" : {
+        "revision" : "f1a4366f74329c313e9528bcbe5286eacc750c05",
+        "version" : "2.2.0"
       }
     }
   ],

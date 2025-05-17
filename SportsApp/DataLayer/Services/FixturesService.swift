@@ -8,14 +8,16 @@
 import Foundation
 import Alamofire
 
+private let API_KEY = "978223e2ba1414ad957ef3bb3083dde031b4400d4b2c4d9ed6b42fb8c30cb5b3"
+
 class FixturesService : FixtureServiceProtocol {
     
-    func fetchFixturesFromAPI(from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?) -> Void) {
-        
+    func fetchFixturesFromAPI(from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?, Error?) -> Void) {
+        //let url = urlMapper(id: <#T##Int#>)
         let url = "https://apiv2.allsportsapi.com/football"
         let parameters: Parameters = [
             "met": "Fixtures",
-            "APIkey": "978223e2ba1414ad957ef3bb3083dde031b4400d4b2c4d9ed6b42fb8c30cb5b3",
+            "APIkey": API_KEY,
             "from": from,
             "to": to,
             "leagueId": leagueId
@@ -25,12 +27,10 @@ class FixturesService : FixtureServiceProtocol {
             .responseDecodable(of: FixturesResponse.self) { response in
                 switch response.result{
                 case .success(let fixtures) :
-                    completion(fixtures)
+                    completion(fixtures,nil)
                 case .failure(let error) :
-                    completion(nil)
+                    completion(nil,error)
                 }
             }
     }
-    
-    
 }
