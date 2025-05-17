@@ -9,6 +9,7 @@ import UIKit
 
 private let comingMatchesReuseIdentifier = "coming"
 private let pastMatchesReuseIdentifier = "pastMatches"
+private let teamsReuseIdentifier = "teams"
 
 
 class MatchesCollectionViewController: UICollectionViewController,
@@ -23,6 +24,7 @@ class MatchesCollectionViewController: UICollectionViewController,
         
         collectionView.register(UINib(nibName: "ComingMatches", bundle: nil), forCellWithReuseIdentifier: comingMatchesReuseIdentifier)
         collectionView.register(UINib(nibName: "PastMatches", bundle: nil), forCellWithReuseIdentifier: pastMatchesReuseIdentifier)
+        collectionView.register(UINib(nibName: "TeamCell", bundle: nil), forCellWithReuseIdentifier: teamsReuseIdentifier)
         
         collectionView.register(SectionHeader.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -43,15 +45,17 @@ class MatchesCollectionViewController: UICollectionViewController,
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0 :
             return 2
-        default :
+        case 1:
             return 3
+        default :
+            return 6
         }
     }
 
@@ -63,8 +67,11 @@ class MatchesCollectionViewController: UICollectionViewController,
         case 0 :
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: comingMatchesReuseIdentifier, for: indexPath) as! ComingMatches
             
-        default:
+        case 1:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: pastMatchesReuseIdentifier, for: indexPath) as! PastMatches
+            
+        default:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: teamsReuseIdentifier, for: indexPath) as! TeamCell
         }
 
         return cell
@@ -87,6 +94,18 @@ class MatchesCollectionViewController: UICollectionViewController,
     
     // MARK: UICollectionViewDelegate
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.section{
+            case 0:
+                print("Coming matches")
+            case 1:
+                print("Past matches")
+            default:
+                let vc = CustomModalViewController()
+                vc.modalPresentationStyle = .overCurrentContext
+                self.present(vc, animated: false)
+        }
+    }
 
     // MARK: UICollectionViewDelegateFlowLayout
 
@@ -157,6 +176,47 @@ extension MatchesCollectionViewController {
     
 }
 
+extension MatchesCollectionViewController{
+    private func drawTeamsSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(80),
+            heightDimension: .absolute(80)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(0.8),
+            heightDimension: .absolute(100)
+        )
+        
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+        group.interItemSpacing = .fixed(30)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 10,
+            leading: 10,
+            bottom: 10,
+            trailing: 10
+        )
+        
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(40))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        section.boundarySupplementaryItems = [header]
+        
+        return section
+    }
+}
+
 extension MatchesCollectionViewController {
     
     private func setupLayout(){
@@ -165,11 +225,14 @@ extension MatchesCollectionViewController {
             switch index{
             case 0 :
                 return self.drawComingMatchesSection()
-            default:
+            case 1:
                 return self.drawPastMatchesSection()
+            default:
+                return self.drawTeamsSection()
             }
         }
         
         self.collectionView.setCollectionViewLayout(layout, animated: true)
     }
 }
+
