@@ -25,6 +25,8 @@ class MatchesCollectionViewController: UICollectionViewController,
 
     
     var selectedLeagueTitle : String?
+    var sportId : Int?
+    var leagueId : String?
     var presenter = MatchesPresenter(fixturesUsecase: FetchFixtures(repo: FixturesRepository(service: FixturesService())))
    
     override func viewDidLoad() {
@@ -42,8 +44,8 @@ class MatchesCollectionViewController: UICollectionViewController,
         
         presenter.setTableView(self)
         
-        presenter.getUpcomingMatches(map:1, from: currentDateFormatter(), to: futureDateFormatter(),leagueId: "18")
-        presenter.getPastMatches(map:1, from: pastYearDataFormatter(), to: pastDateFormatter(), leagueId: "18")
+        presenter.getUpcomingMatches(map: sportId ?? 1, from: currentDateFormatter(), to: futureDateFormatter(),leagueId: leagueId ?? "")
+        presenter.getPastMatches(map:1, from: pastYearDataFormatter(), to: pastDateFormatter(), leagueId: leagueId ?? "")
         
         setupLayout()
     }

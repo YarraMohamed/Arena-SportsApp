@@ -12,12 +12,12 @@
         <!--Home View Controller-->
         <scene sceneID="g4I-0L-tUq">
             <objects>
-                <viewController id="k9J-wQ-xfl" customClass="HomeViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="k9J-wQ-xfl" customClass="HomeViewController" customModule="Arena" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TWh-HM-auf">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSZ-4E-MUO" customClass="Header" customModule="SportsApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSZ-4E-MUO" customClass="Header" customModule="Arena" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="402" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Thq-KW-hEl"/>
@@ -33,7 +33,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="gKj-ye-VXi" customClass="HomeCollectionViewCell" customModule="SportsApp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="gKj-ye-VXi" customClass="HomeCollectionViewCell" customModule="Arena" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="250"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bC7-hH-tQE">
@@ -101,12 +101,12 @@
         <!--Favourites View Controller-->
         <scene sceneID="Awf-dD-sH2">
             <objects>
-                <viewController id="C6x-wM-JTB" customClass="FavouritesViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="C6x-wM-JTB" customClass="FavouritesViewController" customModule="Arena" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cfz-mi-TGb">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYf-26-p4T" customClass="Header" customModule="SportsApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYf-26-p4T" customClass="Header" customModule="Arena" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="402" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="onm-rm-7WU"/>
@@ -116,7 +116,7 @@
                                 <rect key="frame" x="0.0" y="170" width="402" height="611.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="110" id="LHL-WU-24U" customClass="FavouritesCell" customModule="SportsApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="110" id="LHL-WU-24U" customClass="FavouritesCell" customModule="Arena" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="402" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LHL-WU-24U" id="0fT-2L-Tq2">
@@ -216,7 +216,7 @@
         <!--Page View Controller-->
         <scene sceneID="lmf-vq-yCm">
             <objects>
-                <pageViewController storyboardIdentifier="onBoarding" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="lx2-ln-ILO" customClass="PageViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="onBoarding" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="lx2-ln-ILO" customClass="PageViewController" customModule="Arena" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Txh-9v-Bx7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3393" y="-235"/>
@@ -266,7 +266,7 @@
         <!--Leagues View Controller-->
         <scene sceneID="s5d-Fd-1X2">
             <objects>
-                <viewController storyboardIdentifier="leaguesVC" id="3n4-3U-nxH" customClass="LeaguesViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="leaguesVC" id="3n4-3U-nxH" customClass="LeaguesViewController" customModule="Arena" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IfB-7k-qKL">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -274,7 +274,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1ob-lf-ljG">
                                 <rect key="frame" x="0.0" y="164" width="402" height="642"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="leagueCell" rowHeight="103" id="0iE-OC-6oG" customClass="LeagueCell" customModule="SportsApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="leagueCell" rowHeight="103" id="0iE-OC-6oG" customClass="LeagueCell" customModule="Arena" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="402" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0iE-OC-6oG" id="sXr-DX-9bV">
@@ -282,39 +282,40 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premierLeagueLogo" translatesAutoresizingMaskIntoConstraints="NO" id="p8h-QF-u7F">
-                                                    <rect key="frame" x="10" y="0.0" width="80" height="80"/>
+                                                    <rect key="frame" x="10" y="0.0" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="p8h-QF-u7F" secondAttribute="height" multiplier="1:1" id="NnK-zd-jVO"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Premier League" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czr-3W-epU">
-                                                    <rect key="frame" x="107.99999999999999" y="16" width="147.66666666666663" height="24"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Premier League" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czr-3W-epU">
+                                                    <rect key="frame" x="85" y="11" width="265" height="23"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Liverpool" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxG-nA-lvK">
-                                                    <rect key="frame" x="108" y="50" width="84.666666666666686" height="19.666666666666671"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="England" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxG-nA-lvK">
+                                                    <rect key="frame" x="85" y="44" width="63.333333333333343" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="aoC-ah-HDV">
-                                                    <rect key="frame" x="336" y="39" width="25" height="25"/>
+                                                    <rect key="frame" x="350" y="37" width="23" height="23"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="czr-3W-epU" firstAttribute="top" secondItem="sXr-DX-9bV" secondAttribute="top" constant="16" id="80M-vE-z6L"/>
+                                                <constraint firstItem="czr-3W-epU" firstAttribute="top" secondItem="sXr-DX-9bV" secondAttribute="top" constant="11" id="80M-vE-z6L"/>
+                                                <constraint firstItem="czr-3W-epU" firstAttribute="trailing" secondItem="aoC-ah-HDV" secondAttribute="leading" id="84w-0y-XdU"/>
                                                 <constraint firstItem="p8h-QF-u7F" firstAttribute="leading" secondItem="sXr-DX-9bV" secondAttribute="leading" constant="10" id="ABA-rG-XRj"/>
-                                                <constraint firstAttribute="bottom" secondItem="p8h-QF-u7F" secondAttribute="bottom" constant="23" id="GNJ-gZ-ulI"/>
+                                                <constraint firstAttribute="bottom" secondItem="p8h-QF-u7F" secondAttribute="bottom" constant="43" id="GNJ-gZ-ulI"/>
                                                 <constraint firstItem="p8h-QF-u7F" firstAttribute="top" secondItem="sXr-DX-9bV" secondAttribute="top" id="Mn9-1P-Iel"/>
-                                                <constraint firstItem="aoC-ah-HDV" firstAttribute="top" secondItem="sXr-DX-9bV" secondAttribute="topMargin" constant="27" id="Qv3-bP-VDc"/>
-                                                <constraint firstItem="czr-3W-epU" firstAttribute="leading" secondItem="p8h-QF-u7F" secondAttribute="trailing" priority="750" constant="18" id="Vll-48-kbS"/>
+                                                <constraint firstItem="aoC-ah-HDV" firstAttribute="top" secondItem="sXr-DX-9bV" secondAttribute="topMargin" constant="25" id="Qv3-bP-VDc"/>
+                                                <constraint firstItem="czr-3W-epU" firstAttribute="leading" secondItem="p8h-QF-u7F" secondAttribute="trailing" priority="750" constant="15" id="Vll-48-kbS"/>
                                                 <constraint firstItem="vxG-nA-lvK" firstAttribute="top" secondItem="czr-3W-epU" secondAttribute="bottom" constant="10" id="Z3b-c4-ftq"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="aoC-ah-HDV" secondAttribute="trailing" constant="21" id="dVc-JD-m8A"/>
-                                                <constraint firstItem="aoC-ah-HDV" firstAttribute="centerY" secondItem="sXr-DX-9bV" secondAttribute="centerY" id="faV-ce-rtv"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="aoC-ah-HDV" secondAttribute="trailing" constant="9" id="dVc-JD-m8A"/>
+                                                <constraint firstItem="aoC-ah-HDV" firstAttribute="centerY" secondItem="sXr-DX-9bV" secondAttribute="centerY" constant="-3" id="faV-ce-rtv"/>
                                                 <constraint firstItem="vxG-nA-lvK" firstAttribute="leading" secondItem="czr-3W-epU" secondAttribute="leading" id="lc6-fI-xrR"/>
-                                                <constraint firstItem="aoC-ah-HDV" firstAttribute="width" secondItem="sXr-DX-9bV" secondAttribute="height" multiplier="25:103" id="sQn-dc-7BU"/>
+                                                <constraint firstItem="aoC-ah-HDV" firstAttribute="width" secondItem="sXr-DX-9bV" secondAttribute="height" multiplier="25:103" constant="-2" id="sQn-dc-7BU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -347,7 +348,7 @@
         <!--Matches Collection View Controller-->
         <scene sceneID="5iz-o2-amQ">
             <objects>
-                <collectionViewController storyboardIdentifier="matchesScreen" id="IX6-o5-V5K" customClass="MatchesCollectionViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="matchesScreen" id="IX6-o5-V5K" customClass="MatchesCollectionViewController" customModule="Arena" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SVx-85-51f">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -397,7 +398,7 @@
         <!--Screen View Controller-->
         <scene sceneID="zsw-fX-VlU">
             <objects>
-                <viewController storyboardIdentifier="v3" id="hv6-h4-dhN" customClass="ScreenViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="v3" id="hv6-h4-dhN" customClass="ScreenViewController" customModule="Arena" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cbu-gn-T3V">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -446,7 +447,7 @@
         <!--Screen View Controller-->
         <scene sceneID="oaG-Ha-YWM">
             <objects>
-                <viewController storyboardIdentifier="v2" id="dmc-P4-TZw" customClass="ScreenViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="v2" id="dmc-P4-TZw" customClass="ScreenViewController" customModule="Arena" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sLF-kV-xGC">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -495,7 +496,7 @@
         <!--Screen View Controller-->
         <scene sceneID="wYW-pR-6n2">
             <objects>
-                <viewController storyboardIdentifier="v1" id="LaU-pf-0WU" customClass="ScreenViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="v1" id="LaU-pf-0WU" customClass="ScreenViewController" customModule="Arena" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r5C-lO-FiK">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -546,7 +547,7 @@ Let’s explore together!</string>
         <!--Team Details View Controller-->
         <scene sceneID="3th-Kl-tRk">
             <objects>
-                <viewController storyboardIdentifier="TeamDetailsViewController" id="a7s-z0-gHG" customClass="TeamDetailsViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamDetailsViewController" id="a7s-z0-gHG" customClass="TeamDetailsViewController" customModule="Arena" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fby-yC-mR4">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -555,7 +556,7 @@ Let’s explore together!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="teamDetailsCell" rowHeight="101" id="me8-vK-Raf" customClass="TeamDetailsCell" customModule="SportsApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="teamDetailsCell" rowHeight="101" id="me8-vK-Raf" customClass="TeamDetailsCell" customModule="Arena" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="402" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="me8-vK-Raf" id="yAL-58-RmU">

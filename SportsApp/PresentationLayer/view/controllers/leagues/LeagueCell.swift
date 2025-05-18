@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ShimmerSwift
 
 class LeagueCell: UITableViewCell {
 
@@ -48,6 +49,7 @@ class LeagueCell: UITableViewCell {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0))
     
     }
+    
 }
 
 protocol LeagueCellDelegate{
