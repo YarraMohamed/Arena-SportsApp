@@ -20,6 +20,8 @@ class PastMatches: UICollectionViewCell {
     @IBOutlet weak var teamOneImg: UIImageView!
     @IBOutlet weak var teamTwoName: UILabel!
     @IBOutlet weak var teamOneName: UILabel!
+    @IBOutlet weak var emptyLabel: UILabel!
+    
     private let shimmerOne = ShimmeringView()
     private let shimmerTwo = ShimmeringView()
     private var shimmerView : ShimmeringView?
@@ -29,10 +31,10 @@ class PastMatches: UICollectionViewCell {
     }
     
     override func layoutSubviews() {
-        teamOneImg.layer.cornerRadius = teamOneImg.frame.width / 2
+        teamOneImg.layer.cornerRadius = 10
         teamOneImg.layer.masksToBounds = true
         
-        teamTwoImg.layer.cornerRadius = teamTwoImg.frame.width / 2
+        teamTwoImg.layer.cornerRadius = 10
         teamTwoImg.layer.masksToBounds = true
 
         self.layer.cornerRadius = 10
@@ -52,12 +54,12 @@ class PastMatches: UICollectionViewCell {
         shimmerOne.isShimmering = true
         shimmerTwo.isShimmering = true
            
-        teamOneImg.kf.setImage(with: homeURL) { [weak self] result in
+        teamOneImg.kf.setImage(with: homeURL, placeholder: UIImage(named: "award")) { [weak self] result in
             self?.shimmerOne.isShimmering = false
             self?.shimmerOne.removeFromSuperview()
         }
            
-        teamTwoImg.kf.setImage(with: awayURL) { [weak self] result in
+        teamTwoImg.kf.setImage(with: awayURL, placeholder: UIImage(named: "award")) { [weak self] result in
             self?.shimmerTwo.isShimmering = false
             self?.shimmerTwo.removeFromSuperview()
         }

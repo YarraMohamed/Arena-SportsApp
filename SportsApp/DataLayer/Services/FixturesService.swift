@@ -14,7 +14,6 @@ class FixturesService : FixtureServiceProtocol {
     
     func fetchFixturesFromAPI(map:Int,from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?, Error?) -> Void) {
         let url = urlMapper(id: map)
-       // let url = "https://apiv2.allsportsapi.com/football"
         let parameters: Parameters = [
             "met": "Fixtures",
             "APIkey": API_KEY,

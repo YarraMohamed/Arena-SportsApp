@@ -24,4 +24,17 @@ struct League : Decodable {
         case leagueLogo = "league_logo"
         case countryName = "country_name"
     }
+    
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.leagueKey = try container.decode(Int.self, forKey: .leagueKey)
+        self.leagueName = try container.decode(String.self, forKey: .leagueName)
+        self.leagueLogo = try container.decodeIfPresent(String.self, forKey: .leagueLogo)
+        if let countryName = try? container.decode(String.self, forKey: .countryName) {
+            self.countryName = countryName
+        } else {
+            self.countryName = ""
+        }
+    }
 }

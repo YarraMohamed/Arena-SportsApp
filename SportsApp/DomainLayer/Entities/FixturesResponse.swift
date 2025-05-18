@@ -9,24 +9,20 @@ import Foundation
 
 struct FixturesResponse: Decodable {
     var result : [Fixtures]
+    
+    enum CodingKeys: CodingKey {
+        case result
+    }
+    
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard let resultData = try? container.decode([Fixtures].self, forKey: .result) else{
+            self.result = []
+            return
+        }
+        self.result = resultData
+    }
 }
-
-//struct Fixtures: Decodable {
-//
-////    var event_date: String
-////    var event_time: String
-////    var home_team_logo: String
-////    var away_team_logo: String
-//    
-//    var date : String
-//    var time : String
-//    var opponentOne : String
-//    var opponentTwo : String
-//    var opponentOneLogo : String
-//    var opponentTwoLogo : String
-//    var score : String
-//}
-
 
 struct Fixtures: Decodable {
     var date : String
