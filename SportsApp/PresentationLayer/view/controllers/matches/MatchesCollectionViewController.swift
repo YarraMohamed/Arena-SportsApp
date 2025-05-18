@@ -46,9 +46,8 @@ class MatchesCollectionViewController: UICollectionViewController,
         
         presenter.setTableView(self)
         
-        presenter.getUpcomingMatches(map: sportId ?? 1, from: currentDateFormatter(), to: futureDateFormatter(),leagueId: "\(leagueId)")
-        
-        presenter.getPastMatches(map:sportId ?? 1, from: pastYearDataFormatter(), to: pastDateFormatter(), leagueId: "\(leagueId)")
+        presenter.getUpcomingMatches(map: sportId ?? 1, from: currentDateFormatter(), to: futureDateFormatter(),leagueId:    String(describing: leagueId ?? 0))
+        presenter.getPastMatches(map:sportId ?? 1, from: pastYearDataFormatter(), to: pastDateFormatter(), leagueId:    String(describing: leagueId ?? 0))
         
         presenter.getTeams(map: sportId ?? 1, leagueId: leagueId ?? 204)
     
