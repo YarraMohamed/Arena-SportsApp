@@ -41,8 +41,9 @@ class MatchesCollectionViewController: UICollectionViewController,
         self.navigationItem.title = selectedLeagueTitle ?? ""
         
         presenter.setTableView(self)
-        presenter.getUpcomingMatches(from: currentDateFormatter(), to: futureDateFormatter(),leagueId: "18")
-        presenter.getPastMatches(from: pastYearDataFormatter(), to: pastDateFormatter(), leagueId: "18")
+        
+        presenter.getUpcomingMatches(map:1, from: currentDateFormatter(), to: futureDateFormatter(),leagueId: "18")
+        presenter.getPastMatches(map:1, from: pastYearDataFormatter(), to: pastDateFormatter(), leagueId: "18")
         
         setupLayout()
     }
@@ -88,16 +89,16 @@ class MatchesCollectionViewController: UICollectionViewController,
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: comingMatchesReuseIdentifier, for: indexPath) as! ComingMatches
             if isLoadingComingMatches {
                 cell.startShimmeringAll()
-                cell.date.text = ""
-                cell.time.text = ""
                 cell.vsLabel.text = ""
             }else{
                 cell.stopShimmer()
                 cell.vsLabel.text = "VS"
-                cell.date.text = comingMatches[indexPath.row].event_date
-                cell.time.text = comingMatches[indexPath.row].event_time
-                let homeLogoURL = URL(string: comingMatches[indexPath.row].home_team_logo)
-                let awayLogoURL = URL(string: comingMatches[indexPath.row].away_team_logo)
+                cell.date.text = comingMatches[indexPath.row].date
+                cell.time.text = comingMatches[indexPath.row].time
+                cell.teamOneName.text = comingMatches[indexPath.row].opponentOne
+                cell.teamTwoName.text = comingMatches[indexPath.row].opponentTwo
+                let homeLogoURL = URL(string: comingMatches[indexPath.row].opponentOneLogo)
+                let awayLogoURL = URL(string: comingMatches[indexPath.row].opponentTwoLogo)
                 cell.setTeamImages(homeURL: homeLogoURL, awayURL: awayLogoURL)
             }
             return cell
@@ -113,10 +114,13 @@ class MatchesCollectionViewController: UICollectionViewController,
             }else{
                 cell.stopShimmer()
                 cell.vsLabel.text = "VS"
-                cell.date.text = pastMatches[indexPath.row].event_date
-                cell.time.text = pastMatches[indexPath.row].event_time
-                let homeLogoURL = URL(string: pastMatches[indexPath.row].home_team_logo)
-                let awayLogoURL = URL(string: pastMatches[indexPath.row].away_team_logo)
+                cell.date.text = pastMatches[indexPath.row].date
+                cell.time.text = pastMatches[indexPath.row].time
+                cell.score.text = pastMatches[indexPath.row].score
+                cell.teamOneName.text = pastMatches[indexPath.row].opponentOne
+                cell.teamTwoName.text = pastMatches[indexPath.row].opponentTwo
+                let homeLogoURL = URL(string: pastMatches[indexPath.row].opponentOneLogo)
+                let awayLogoURL = URL(string: pastMatches[indexPath.row].opponentTwoLogo)
                 cell.setTeamImages(homeURL: homeLogoURL, awayURL: awayLogoURL)
             }
             return cell

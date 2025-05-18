@@ -8,14 +8,14 @@
 import Foundation
 
 protocol FixtureServiceProtocol {
-    func fetchFixturesFromAPI(from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?, Error?) -> Void)
+    func fetchFixturesFromAPI(map:Int, from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?, Error?) -> Void)
 }
 
 protocol FixturesRepositoryProtocol {
-    func getFixtures(from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?, Error?) -> Void)
+    func getFixtures(map:Int, from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?, Error?) -> Void)
     
 }
 
 protocol FixturesUsecaseProtocol {
-    func fetchFixtures(from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?, Error?) -> Void)
+    func fetchFixtures(map:Int, from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?, Error?) -> Void)
 }

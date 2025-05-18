@@ -18,7 +18,8 @@ class PastMatches: UICollectionViewCell {
     @IBOutlet weak var score: UILabel!
     @IBOutlet weak var teamTwoImg: UIImageView!
     @IBOutlet weak var teamOneImg: UIImageView!
-    
+    @IBOutlet weak var teamTwoName: UILabel!
+    @IBOutlet weak var teamOneName: UILabel!
     private let shimmerOne = ShimmeringView()
     private let shimmerTwo = ShimmeringView()
     private var shimmerView : ShimmeringView?

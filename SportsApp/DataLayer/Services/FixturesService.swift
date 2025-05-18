@@ -12,9 +12,9 @@ private let API_KEY = "978223e2ba1414ad957ef3bb3083dde031b4400d4b2c4d9ed6b42fb8c
 
 class FixturesService : FixtureServiceProtocol {
     
-    func fetchFixturesFromAPI(from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?, Error?) -> Void) {
-        //let url = urlMapper(id: <#T##Int#>)
-        let url = "https://apiv2.allsportsapi.com/football"
+    func fetchFixturesFromAPI(map:Int,from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?, Error?) -> Void) {
+        let url = urlMapper(id: map)
+       // let url = "https://apiv2.allsportsapi.com/football"
         let parameters: Parameters = [
             "met": "Fixtures",
             "APIkey": API_KEY,
