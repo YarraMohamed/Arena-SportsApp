@@ -20,16 +20,20 @@ class MatchesCollectionViewController: UICollectionViewController,
     private let sectionTitles = ["Upcoming Matches", "Past Matches", "Teams"]
     private var comingMatches = [Fixtures]()
     private var pastMatches = [Fixtures]()
+    private var teams = [Team]()
     private var isLoadingComingMatches = true
     private var isLoadingPastMatches = true
+    private var isLoadingTeams = true
 
     
     var selectedLeagueTitle : String?
+    var sportId : Int?
+    var leagueId : Int?
     var presenter = MatchesPresenter(fixturesUsecase: FetchFixtures(repo: FixturesRepository(service: FixturesService())))
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+  
         collectionView.register(UINib(nibName: "ComingMatches", bundle: nil), forCellWithReuseIdentifier: comingMatchesReuseIdentifier)
         collectionView.register(UINib(nibName: "PastMatches", bundle: nil), forCellWithReuseIdentifier: pastMatchesReuseIdentifier)
         collectionView.register(UINib(nibName: "TeamCell", bundle: nil), forCellWithReuseIdentifier: teamsReuseIdentifier)
@@ -42,9 +46,11 @@ class MatchesCollectionViewController: UICollectionViewController,
         
         presenter.setTableView(self)
         
-        presenter.getUpcomingMatches(map:1, from: currentDateFormatter(), to: futureDateFormatter(),leagueId: "18")
-        presenter.getPastMatches(map:1, from: pastYearDataFormatter(), to: pastDateFormatter(), leagueId: "18")
+        presenter.getUpcomingMatches(map: sportId ?? 1, from: currentDateFormatter(), to: futureDateFormatter(),leagueId:    String(describing: leagueId ?? 0))
+        presenter.getPastMatches(map:sportId ?? 1, from: pastYearDataFormatter(), to: pastDateFormatter(), leagueId:    String(describing: leagueId ?? 0))
         
+        presenter.getTeams(map: sportId ?? 1, leagueId: leagueId ?? 204)
+    
         setupLayout()
     }
     
@@ -65,6 +71,14 @@ class MatchesCollectionViewController: UICollectionViewController,
         }
     }
     
+    func renderTeams(result: TeamsResponse?) {
+        DispatchQueue.main.async {
+            self.isLoadingTeams = false
+            self.teams = result?.result ?? []
+            self.collectionView.reloadData()
+        }
+    }
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -74,11 +88,17 @@ class MatchesCollectionViewController: UICollectionViewController,
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0 :
-            return isLoadingComingMatches ? 1 : comingMatches.count
+            if(isLoadingComingMatches || comingMatches.isEmpty){
+                return 1
+            }
+            return comingMatches.count
         case 1:
+            if(isLoadingPastMatches || pastMatches.isEmpty){
+                return 1
+            }
             return isLoadingPastMatches ? 1 :  pastMatches.count
         default :
-            return 4
+            return isLoadingTeams ? 1 : teams.count
         }
     }
 
@@ -90,6 +110,9 @@ class MatchesCollectionViewController: UICollectionViewController,
             if isLoadingComingMatches {
                 cell.startShimmeringAll()
                 cell.vsLabel.text = ""
+            }else if comingMatches.isEmpty{
+                cell.startShimmeringAll()
+                cell.emptyLabel.text = "No Upcoming Matches"
             }else{
                 cell.stopShimmer()
                 cell.vsLabel.text = "VS"
@@ -111,6 +134,10 @@ class MatchesCollectionViewController: UICollectionViewController,
                 cell.time.text = ""
                 cell.score.text = ""
                 cell.vsLabel.text = ""
+            }else if pastMatches.isEmpty{
+                cell.startShimmeringAll()
+                cell.emptyLabel.text = "No Past Matches"
+                
             }else{
                 cell.stopShimmer()
                 cell.vsLabel.text = "VS"
@@ -127,6 +154,16 @@ class MatchesCollectionViewController: UICollectionViewController,
             
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: teamsReuseIdentifier, for: indexPath) as! TeamCell
+            
+            if isLoadingTeams {
+//                cell.startShimmeringAll()
+//                cell.vsLabel.text = ""
+            }else{
+//                cell.stopShimmer()
+                cell.teamImageView.kf.setImage(with: URL(string: teams[indexPath.row].teamLogo ?? "https://static.becharge.be/img/be/placeholder.png"), placeholder: UIImage(named: "leaguePlaceholder"))
+                
+                cell.teamName.text = teams[indexPath.row].teamName
+            }
             return cell
         }
 
@@ -186,7 +223,7 @@ extension MatchesCollectionViewController {
         
         let section = NSCollectionLayoutSection(group: myGroup)
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 40, leading: 20, bottom: 10, trailing: 10)
     
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                 heightDimension: .absolute(10))
@@ -195,7 +232,7 @@ extension MatchesCollectionViewController {
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top
         )
-        
+        header.contentInsets = NSDirectionalEdgeInsets(top: 30, leading: -5, bottom: 0, trailing: 0)
         section.boundarySupplementaryItems = [header]
 
         
@@ -235,7 +272,7 @@ extension MatchesCollectionViewController{
     private func drawTeamsSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .absolute(80),
-            heightDimension: .absolute(80)
+            heightDimension: .absolute(100)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(
@@ -252,20 +289,35 @@ extension MatchesCollectionViewController{
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = NSDirectionalEdgeInsets(
-            top: 10,
+            top: 20,
             leading: 10,
             bottom: 10,
             trailing: 10
         )
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(40))
+            heightDimension: .absolute(10))
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top
         )
+        
         section.boundarySupplementaryItems = [header]
+        
+        // animation
+        section.visibleItemsInvalidationHandler = { (items, offset, environment) in
+            items
+                .filter { $0.representedElementKind == nil}
+                .forEach { item in
+                    let distanceFromCenter = abs((item.frame.midX - offset.x) - environment.container.contentSize.width / 2.0)
+                    let minScale: CGFloat = 0.8
+                    let maxScale: CGFloat = 1.0
+                    let scale = max(maxScale - (distanceFromCenter / environment.container.contentSize.width), minScale)
+                    item.transform = CGAffineTransform(scaleX: scale, y: scale)
+                }
+            
+        }
         
         return section
     }

@@ -10,4 +10,5 @@ import Foundation
 protocol MatchesProtocol : AnyObject {
     func renderUpcomingMatches(result: FixturesResponse?)
     func renderPastMatches(result: FixturesResponse?)
+    func renderTeams(result: TeamsResponse?)
 }
