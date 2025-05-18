@@ -79,7 +79,7 @@ extension LeaguesViewController : UITableViewDelegate{
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "matchesScreen") as! MatchesCollectionViewController
         vc.selectedLeagueTitle = leagues[indexPath.row].leagueName
         vc.sportId = sportId
-        vc.leagueId = "\(leagues[indexPath.row].leagueKey)" 
+        vc.leagueId = leagues[indexPath.row].leagueKey
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }

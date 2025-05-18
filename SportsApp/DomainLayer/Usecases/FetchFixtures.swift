@@ -26,4 +26,18 @@ class FetchFixtures : FixturesUsecaseProtocol {
             completion(res,nil)
         }
     }
+    
+
+    func fetchTeams(map: Int, leagueId: Int, completion: @escaping (TeamsResponse?, Error?) -> Void) {
+        repo.getTeams(map: map, leagueId: leagueId) { response, error in
+            if let error = error {
+                completion(nil, error)
+            }
+            guard let response = response else {
+                completion(nil, error)
+                return
+            }
+            completion(response, nil)
+        }
+    }
 }

@@ -9,6 +9,7 @@ import UIKit
 
 class TeamCell: UICollectionViewCell {
 
+    @IBOutlet weak var teamName: UILabel!
     @IBOutlet weak var teamImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
