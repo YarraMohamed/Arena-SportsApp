@@ -37,7 +37,8 @@ class MatchesPresenter {
     func getPastMatches(map:Int, from:String, to:String, leagueId:String){
         fixturesUsecase.fetchFixtures(map:map,from:from, to: to, leagueId: leagueId) { result, err in
             if let err = err{
-                print("\(err.localizedDescription)")
+                return
+               // print("\(err.localizedDescription)")
             }
             guard let result = result else {
                 self.matchesViewController?.renderPastMatches(result: nil)

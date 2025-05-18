@@ -66,6 +66,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUn-pJ-uap">
+                        <rect key="frame" x="165" y="80" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="MGY-zX-qKI" firstAttribute="centerX" secondItem="aVX-ld-tT5" secondAttribute="centerX" id="0Uf-kR-eea"/>
@@ -77,12 +83,14 @@
                     <constraint firstItem="lAR-OQ-tmg" firstAttribute="top" secondItem="XdE-FV-UvD" secondAttribute="bottom" constant="5" id="KoD-zH-Uro"/>
                     <constraint firstItem="ar4-zn-9PV" firstAttribute="leading" secondItem="HCQ-B6-Ox7" secondAttribute="leading" id="MdH-rL-1sh"/>
                     <constraint firstItem="XdE-FV-UvD" firstAttribute="top" secondItem="aVX-ld-tT5" secondAttribute="top" constant="20" id="NX7-l1-TIK"/>
+                    <constraint firstItem="pUn-pJ-uap" firstAttribute="centerY" secondItem="aVX-ld-tT5" secondAttribute="centerY" id="RN6-du-PrI"/>
                     <constraint firstItem="ar4-zn-9PV" firstAttribute="width" secondItem="HCQ-B6-Ox7" secondAttribute="width" id="Ugi-9b-QKl"/>
                     <constraint firstItem="m3s-qF-e6f" firstAttribute="width" secondItem="biD-Db-hLv" secondAttribute="width" id="bLY-Kq-RJp"/>
                     <constraint firstItem="m3s-qF-e6f" firstAttribute="top" secondItem="biD-Db-hLv" secondAttribute="bottom" constant="10" id="ehF-8d-vv1"/>
                     <constraint firstItem="HCQ-B6-Ox7" firstAttribute="leading" secondItem="aVX-ld-tT5" secondAttribute="leading" constant="10" id="fAa-NP-71l"/>
                     <constraint firstItem="biD-Db-hLv" firstAttribute="centerY" secondItem="aVX-ld-tT5" secondAttribute="centerY" constant="-10" id="lUL-Kg-aGD"/>
                     <constraint firstItem="6zE-NG-nPy" firstAttribute="centerX" secondItem="aVX-ld-tT5" secondAttribute="centerX" id="lkw-a8-2dq"/>
+                    <constraint firstItem="pUn-pJ-uap" firstAttribute="centerX" secondItem="aVX-ld-tT5" secondAttribute="centerX" id="oJH-hp-SUI"/>
                     <constraint firstItem="HCQ-B6-Ox7" firstAttribute="centerY" secondItem="aVX-ld-tT5" secondAttribute="centerY" constant="-10" id="pjs-3G-JOu"/>
                     <constraint firstItem="m3s-qF-e6f" firstAttribute="leading" secondItem="biD-Db-hLv" secondAttribute="leading" id="uGO-Z8-HKH"/>
                     <constraint firstItem="lAR-OQ-tmg" firstAttribute="centerX" secondItem="aVX-ld-tT5" secondAttribute="centerX" id="xoV-JO-2Ky"/>
@@ -90,6 +98,7 @@
             </collectionViewCellContentView>
             <connections>
                 <outlet property="date" destination="MGY-zX-qKI" id="H2A-42-L0V"/>
+                <outlet property="emptyLabel" destination="pUn-pJ-uap" id="Xdp-RL-VXD"/>
                 <outlet property="score" destination="lAR-OQ-tmg" id="I7k-T6-3cb"/>
                 <outlet property="teamOneImg" destination="HCQ-B6-Ox7" id="5MH-AO-1VE"/>
                 <outlet property="teamOneName" destination="ar4-zn-9PV" id="qxB-ik-XRb"/>

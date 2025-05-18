@@ -33,7 +33,7 @@ class MatchesCollectionViewController: UICollectionViewController,
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+  
         collectionView.register(UINib(nibName: "ComingMatches", bundle: nil), forCellWithReuseIdentifier: comingMatchesReuseIdentifier)
         collectionView.register(UINib(nibName: "PastMatches", bundle: nil), forCellWithReuseIdentifier: pastMatchesReuseIdentifier)
         collectionView.register(UINib(nibName: "TeamCell", bundle: nil), forCellWithReuseIdentifier: teamsReuseIdentifier)
@@ -51,7 +51,7 @@ class MatchesCollectionViewController: UICollectionViewController,
         presenter.getPastMatches(map:sportId ?? 1, from: pastYearDataFormatter(), to: pastDateFormatter(), leagueId: "\(leagueId)")
         
         presenter.getTeams(map: sportId ?? 1, leagueId: leagueId ?? 204)
-        
+    
         setupLayout()
     }
     
@@ -89,8 +89,14 @@ class MatchesCollectionViewController: UICollectionViewController,
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0 :
-            return isLoadingComingMatches ? 1 : comingMatches.count
+            if(isLoadingComingMatches || comingMatches.isEmpty){
+                return 1
+            }
+            return comingMatches.count
         case 1:
+            if(isLoadingPastMatches || pastMatches.isEmpty){
+                return 1
+            }
             return isLoadingPastMatches ? 1 :  pastMatches.count
         default :
             return isLoadingTeams ? 1 : teams.count
@@ -105,6 +111,9 @@ class MatchesCollectionViewController: UICollectionViewController,
             if isLoadingComingMatches {
                 cell.startShimmeringAll()
                 cell.vsLabel.text = ""
+            }else if comingMatches.isEmpty{
+                cell.startShimmeringAll()
+                cell.emptyLabel.text = "No Upcoming Matches"
             }else{
                 cell.stopShimmer()
                 cell.vsLabel.text = "VS"
@@ -126,6 +135,10 @@ class MatchesCollectionViewController: UICollectionViewController,
                 cell.time.text = ""
                 cell.score.text = ""
                 cell.vsLabel.text = ""
+            }else if pastMatches.isEmpty{
+                cell.startShimmeringAll()
+                cell.emptyLabel.text = "No Past Matches"
+                
             }else{
                 cell.stopShimmer()
                 cell.vsLabel.text = "VS"
@@ -211,7 +224,7 @@ extension MatchesCollectionViewController {
         
         let section = NSCollectionLayoutSection(group: myGroup)
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 40, leading: 20, bottom: 10, trailing: 10)
     
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                 heightDimension: .absolute(10))
@@ -220,7 +233,7 @@ extension MatchesCollectionViewController {
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top
         )
-        
+        header.contentInsets = NSDirectionalEdgeInsets(top: 30, leading: -5, bottom: 0, trailing: 0)
         section.boundarySupplementaryItems = [header]
 
         

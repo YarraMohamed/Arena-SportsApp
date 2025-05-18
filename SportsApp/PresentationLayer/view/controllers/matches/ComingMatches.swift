@@ -18,6 +18,7 @@ class ComingMatches: UICollectionViewCell {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var teamTwoName: UILabel!
     @IBOutlet weak var teamOneName: UILabel!
+    @IBOutlet weak var emptyLabel: UILabel!
     
     private let shimmerOne = ShimmeringView()
     private let shimmerTwo = ShimmeringView()
@@ -49,12 +50,12 @@ class ComingMatches: UICollectionViewCell {
         shimmerOne.isShimmering = true
         shimmerTwo.isShimmering = true
            
-        teamOneImg.kf.setImage(with: homeURL, placeholder: nil, options: nil, progressBlock: nil) { [weak self] result in
+        teamOneImg.kf.setImage(with: homeURL, placeholder: UIImage(named: "award"), options: nil, progressBlock: nil) { [weak self] result in
             self?.shimmerOne.isShimmering = false
             self?.shimmerOne.removeFromSuperview()
         }
            
-        teamTwoImg.kf.setImage(with: awayURL, placeholder: nil, options: nil, progressBlock: nil) { [weak self] result in
+        teamTwoImg.kf.setImage(with: awayURL, placeholder: UIImage(named: "award"), options: nil, progressBlock: nil) { [weak self] result in
             self?.shimmerTwo.isShimmering = false
             self?.shimmerTwo.removeFromSuperview()
         }
