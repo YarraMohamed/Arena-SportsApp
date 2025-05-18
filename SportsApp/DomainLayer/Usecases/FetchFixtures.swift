@@ -14,8 +14,8 @@ class FetchFixtures : FixturesUsecaseProtocol {
         self.repo = repo
     }
     
-    func fetchFixtures(from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?, Error?) -> Void) {
-        repo.getFixtures(from: from, to: to, leagueId: leagueId) { res, err in
+    func fetchFixtures(map:Int,from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?, Error?) -> Void) {
+        repo.getFixtures(map:map, from: from, to: to, leagueId: leagueId) { res, err in
             if let err = err {
                 completion(nil,err)
             }
@@ -26,21 +26,4 @@ class FetchFixtures : FixturesUsecaseProtocol {
             completion(res,nil)
         }
     }
-
-//
-//    let repo : FixturesRepositoryProtocol
-//    
-//    init(repo : FixturesRepositoryProtocol) {
-//        self.repo = repo
-//    }
-//    
-//    func fetchFixtures(from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?) -> Void) {
-//        repo.getFixtures(from: from, to: to, leagueId: leagueId) { fixtures in
-//            guard let fixtures = fixtures else {
-//                completion(nil)
-//                return
-//            }
-//            completion(fixtures)
-//        }
-//    }
 }

@@ -16,6 +16,8 @@ class ComingMatches: UICollectionViewCell {
     @IBOutlet weak var teamTwoImg: UIImageView!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var teamTwoName: UILabel!
+    @IBOutlet weak var teamOneName: UILabel!
     
     private let shimmerOne = ShimmeringView()
     private let shimmerTwo = ShimmeringView()

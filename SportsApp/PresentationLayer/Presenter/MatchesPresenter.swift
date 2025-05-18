@@ -20,8 +20,8 @@ class MatchesPresenter {
         self.matchesViewController = matchesViewController
     }
     
-    func getUpcomingMatches(from:String, to:String, leagueId:String){
-        fixturesUsecase.fetchFixtures(from:from, to: to, leagueId: leagueId) { result, err in
+    func getUpcomingMatches(map:Int, from:String, to:String, leagueId:String){
+        fixturesUsecase.fetchFixtures(map:map, from:from, to: to, leagueId: leagueId) { result, err in
             if let err = err{
                 print("\(err.localizedDescription)")
             }
@@ -34,8 +34,8 @@ class MatchesPresenter {
         }
     }
     
-    func getPastMatches(from:String, to:String, leagueId:String){
-        fixturesUsecase.fetchFixtures(from:from, to: to, leagueId: leagueId) { result, err in
+    func getPastMatches(map:Int, from:String, to:String, leagueId:String){
+        fixturesUsecase.fetchFixtures(map:map,from:from, to: to, leagueId: leagueId) { result, err in
             if let err = err{
                 print("\(err.localizedDescription)")
             }
