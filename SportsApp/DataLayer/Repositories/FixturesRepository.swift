@@ -14,15 +14,17 @@ class FixturesRepository : FixturesRepositoryProtocol {
         self.service = service
     }
     
-    func getFixtures(from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?) -> Void) {
-        service.fetchFixturesFromAPI(from: from, to: to, leagueId: leagueId) { fixtures in
+    func getFixtures(map:Int, from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?, Error?) -> Void) {
+        service.fetchFixturesFromAPI(map:map, from: from, to: to, leagueId: leagueId) { fixtures, err in
+            if let err = err {
+                completion(nil,err)
+            }
             guard let fixtures = fixtures else {
-                completion(nil)
+                completion(nil,err)
                 return
             }
-            completion(fixtures)
+            completion(fixtures,nil)
         }
     }
-    
     
 }

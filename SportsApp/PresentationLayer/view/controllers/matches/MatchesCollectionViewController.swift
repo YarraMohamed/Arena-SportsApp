@@ -6,16 +6,24 @@
 //
 
 import UIKit
+import Kingfisher
+import ShimmerSwift
 
-private let comingMatchesReuseIdentifier = "coming"
+private let comingMatchesReuseIdentifier = "comingMatches"
 private let pastMatchesReuseIdentifier = "pastMatches"
 private let teamsReuseIdentifier = "teams"
 
 
 class MatchesCollectionViewController: UICollectionViewController,
-                                       UICollectionViewDelegateFlowLayout{
+                                       UICollectionViewDelegateFlowLayout, MatchesProtocol{
     
     private let sectionTitles = ["Upcoming Matches", "Past Matches", "Teams"]
+    private var comingMatches = [Fixtures]()
+    private var pastMatches = [Fixtures]()
+    private var isLoadingComingMatches = true
+    private var isLoadingPastMatches = true
+
+    
     var selectedLeagueTitle : String?
     var presenter = MatchesPresenter(fixturesUsecase: FetchFixtures(repo: FixturesRepository(service: FixturesService())))
    
@@ -33,13 +41,28 @@ class MatchesCollectionViewController: UICollectionViewController,
         self.navigationItem.title = selectedLeagueTitle ?? ""
         
         presenter.setTableView(self)
-        presenter.getData()
+        
+        presenter.getUpcomingMatches(map:1, from: currentDateFormatter(), to: futureDateFormatter(),leagueId: "18")
+        presenter.getPastMatches(map:1, from: pastYearDataFormatter(), to: pastDateFormatter(), leagueId: "18")
         
         setupLayout()
     }
     
-    func renderView(result:FixturesResponse?){
-        print("\(result?.result.count)")
+    
+    func renderUpcomingMatches(result: FixturesResponse?) {
+        DispatchQueue.main.async {
+            self.isLoadingComingMatches = false
+            self.comingMatches = result?.result ?? []
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func renderPastMatches(result: FixturesResponse?) {
+        DispatchQueue.main.async {
+            self.isLoadingPastMatches = false
+            self.pastMatches = result?.result ?? []
+            self.collectionView.reloadData()
+        }
     }
     
     // MARK: UICollectionViewDataSource
@@ -51,30 +74,62 @@ class MatchesCollectionViewController: UICollectionViewController,
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0 :
-            return 2
+            return isLoadingComingMatches ? 1 : comingMatches.count
         case 1:
-            return 3
+            return isLoadingPastMatches ? 1 :  pastMatches.count
         default :
-            return 6
+            return 4
         }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        var cell : UICollectionViewCell!
-        
         switch indexPath.section {
         case 0 :
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: comingMatchesReuseIdentifier, for: indexPath) as! ComingMatches
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: comingMatchesReuseIdentifier, for: indexPath) as! ComingMatches
+            if isLoadingComingMatches {
+                cell.startShimmeringAll()
+                cell.vsLabel.text = ""
+            }else{
+                cell.stopShimmer()
+                cell.vsLabel.text = "VS"
+                cell.date.text = comingMatches[indexPath.row].date
+                cell.time.text = comingMatches[indexPath.row].time
+                cell.teamOneName.text = comingMatches[indexPath.row].opponentOne
+                cell.teamTwoName.text = comingMatches[indexPath.row].opponentTwo
+                let homeLogoURL = URL(string: comingMatches[indexPath.row].opponentOneLogo)
+                let awayLogoURL = URL(string: comingMatches[indexPath.row].opponentTwoLogo)
+                cell.setTeamImages(homeURL: homeLogoURL, awayURL: awayLogoURL)
+            }
+            return cell
             
-        case 1:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: pastMatchesReuseIdentifier, for: indexPath) as! PastMatches
+        case 1 :
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pastMatchesReuseIdentifier, for: indexPath) as! PastMatches
+            if isLoadingPastMatches {
+                cell.startShimmeringAll()
+                cell.date.text = ""
+                cell.time.text = ""
+                cell.score.text = ""
+                cell.vsLabel.text = ""
+            }else{
+                cell.stopShimmer()
+                cell.vsLabel.text = "VS"
+                cell.date.text = pastMatches[indexPath.row].date
+                cell.time.text = pastMatches[indexPath.row].time
+                cell.score.text = pastMatches[indexPath.row].score
+                cell.teamOneName.text = pastMatches[indexPath.row].opponentOne
+                cell.teamTwoName.text = pastMatches[indexPath.row].opponentTwo
+                let homeLogoURL = URL(string: pastMatches[indexPath.row].opponentOneLogo)
+                let awayLogoURL = URL(string: pastMatches[indexPath.row].opponentTwoLogo)
+                cell.setTeamImages(homeURL: homeLogoURL, awayURL: awayLogoURL)
+            }
+            return cell
             
         default:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: teamsReuseIdentifier, for: indexPath) as! TeamCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: teamsReuseIdentifier, for: indexPath) as! TeamCell
+            return cell
         }
 
-        return cell
     }
 
     override func collectionView(_ collectionView: UICollectionView,
@@ -93,7 +148,6 @@ class MatchesCollectionViewController: UICollectionViewController,
     }
     
     // MARK: UICollectionViewDelegate
-
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section{
             case 0:
@@ -106,6 +160,7 @@ class MatchesCollectionViewController: UICollectionViewController,
                 self.present(vc, animated: false)
         }
     }
+
 
     // MARK: UICollectionViewDelegateFlowLayout
 
@@ -202,7 +257,6 @@ extension MatchesCollectionViewController{
             bottom: 10,
             trailing: 10
         )
-        
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
             heightDimension: .absolute(40))
@@ -216,6 +270,7 @@ extension MatchesCollectionViewController{
         return section
     }
 }
+
 
 extension MatchesCollectionViewController {
     
@@ -235,4 +290,3 @@ extension MatchesCollectionViewController {
         self.collectionView.setCollectionViewLayout(layout, animated: true)
     }
 }
-
