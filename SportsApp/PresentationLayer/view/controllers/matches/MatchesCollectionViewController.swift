@@ -15,23 +15,34 @@ private let teamsReuseIdentifier = "teams"
 
 
 class MatchesCollectionViewController: UICollectionViewController,
-                                       UICollectionViewDelegateFlowLayout, MatchesProtocol, TeamsProtocol{
+                                       UICollectionViewDelegateFlowLayout, MatchesProtocol, TeamsProtocol, PlayersProtocol{
     
-    private let sectionTitles = ["Upcoming Matches", "Past Matches", "Teams"]
     private var comingMatches = [Fixtures]()
     private var pastMatches = [Fixtures]()
     private var teams = [Team]()
+    private var players = [Player]()
     private var isLoadingComingMatches = true
     private var isLoadingPastMatches = true
     private var isLoadingTeams = true
+    private var isLoadingPlayers = true
+    
 
     
     var selectedLeagueTitle : String?
     var sportId : Int?
     var leagueId : Int?
+    
+    private var sectionTitles: [String] {
+        return [
+            "Upcoming Matches",
+            "Past Matches",
+            (sportId == 4 ? "Players" : "Teams")
+        ]
+    }
     var presenter = MatchesPresenter(fixturesUsecase: FetchFixtures(repo: FixturesRepository(service: FixturesService())))
     
     var teamsPresenter = TeamsPresenter(teamsUsecase: TeamsUseCase(repo: TeamsRepository(service: TeamsService())))
+    var playersPresenter = PlayersPresenter(playersUsecase: PlayersUseCase(repo: PlayersRepository(service: PlayersService())))
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,37 +59,48 @@ class MatchesCollectionViewController: UICollectionViewController,
         
         presenter.setTableView(self)
         teamsPresenter.setTableView(self)
+        playersPresenter.setTableView(self)
         
         presenter.getUpcomingMatches(map: sportId ?? 1, from: currentDateFormatter(), to: futureDateFormatter(),leagueId:    String(describing: leagueId ?? 0))
         presenter.getPastMatches(map:sportId ?? 1, from: pastYearDataFormatter(), to: pastDateFormatter(), leagueId:    String(describing: leagueId ?? 0))
         
         teamsPresenter.getTeams(map: sportId ?? 1, leagueId: leagueId ?? 204)
+        
+        playersPresenter.getTennisPlayers(map: sportId ?? 1, leagueId: leagueId ?? 2)
     
         setupLayout()
     }
     
     
     func renderUpcomingMatches(result: FixturesResponse?) {
-        DispatchQueue.main.async {
-            self.isLoadingComingMatches = false
-            self.comingMatches = result?.result ?? []
-            self.collectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.isLoadingComingMatches = false
+            self?.comingMatches = result?.result ?? []
+            self?.collectionView.reloadData()
         }
     }
     
     func renderPastMatches(result: FixturesResponse?) {
-        DispatchQueue.main.async {
-            self.isLoadingPastMatches = false
-            self.pastMatches = result?.result ?? []
-            self.collectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.isLoadingPastMatches = false
+            self?.pastMatches = result?.result ?? []
+            self?.collectionView.reloadData()
         }
     }
     
     func renderTeams(result: TeamsResponse?) {
-        DispatchQueue.main.async {
-            self.isLoadingTeams = false
-            self.teams = result?.result ?? []
-            self.collectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.isLoadingTeams = false
+            self?.teams = result?.result ?? []
+            self?.collectionView.reloadData()
+        }
+    }
+    
+    func renderPlayers(result: PlayersResponse?) {
+        DispatchQueue.main.async { [weak self] in
+            self?.isLoadingPlayers = false
+            self?.players = result?.result ?? []
+            self?.collectionView.reloadData()
         }
     }
     
@@ -100,8 +122,19 @@ class MatchesCollectionViewController: UICollectionViewController,
                 return 1
             }
             return isLoadingPastMatches ? 1 :  pastMatches.count
+            
         default :
-            return isLoadingTeams ? 1 : teams.count
+            switch sportId{
+            case 4:
+                if(isLoadingPlayers || players.isEmpty){
+                    return 1
+                }
+                return isLoadingPlayers ? 1 : players.count
+                
+                default :
+                    return isLoadingTeams ? 1 : teams.count
+            }
+            
         }
     }
 
@@ -158,15 +191,31 @@ class MatchesCollectionViewController: UICollectionViewController,
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: teamsReuseIdentifier, for: indexPath) as! TeamCell
             
-            if isLoadingTeams {
-//                cell.startShimmeringAll()
-//                cell.vsLabel.text = ""
-            }else{
-//                cell.stopShimmer()
-                cell.teamImageView.kf.setImage(with: URL(string: teams[indexPath.row].teamLogo ?? "https://static.becharge.be/img/be/placeholder.png"), placeholder: UIImage(named: "leaguePlaceholder"))
+            switch sportId{
+            case 4:
+                if isLoadingPlayers{
+                    // cell.startShimmeringAll()
+                    // cell.vsLabel.text = ""
+
+                }else{
+    //              cell.stopShimmer()
+                    cell.teamImageView.kf.setImage(with: URL(string: players[indexPath.row].playerImage ?? "https://static.becharge.be/img/be/placeholder.png"), placeholder: UIImage(named: "leaguePlaceholder"))
+                    
+                    cell.teamName.text = players[indexPath.row].playerName
+                }
                 
-                cell.teamName.text = teams[indexPath.row].teamName
+                default :
+                if isLoadingTeams {
+        //                cell.startShimmeringAll()
+        //                cell.vsLabel.text = ""
+                    }else{
+        //                cell.stopShimmer()
+                        cell.teamImageView.kf.setImage(with: URL(string: teams[indexPath.row].teamLogo ?? "https://static.becharge.be/img/be/placeholder.png"), placeholder: UIImage(named: "leaguePlaceholder"))
+                        
+                        cell.teamName.text = teams[indexPath.row].teamName
+                    }
             }
+            
             return cell
         }
 
@@ -189,7 +238,8 @@ class MatchesCollectionViewController: UICollectionViewController,
     
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.section{
+        if let sport = sportId, (1...3).contains(sport) {
+            switch indexPath.section{
             case 0:
                 print("Coming matches")
             case 1:
@@ -201,7 +251,9 @@ class MatchesCollectionViewController: UICollectionViewController,
                 vc.teamId = teams[indexPath.row].teamKey
                 vc.teamLogo = teams[indexPath.row].teamLogo
                 vc.teamName = teams[indexPath.row].teamName
+                
                 self.present(vc, animated: false)
+            }
         }
     }
 

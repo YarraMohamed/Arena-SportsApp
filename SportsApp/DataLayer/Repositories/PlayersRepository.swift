@@ -26,5 +26,18 @@ class PlayersRepository : PlayersRepositoryProtocol{
             completion(response,nil)
         }
     }
+    
+    func getTennisPlayers(map: Int, leagueId: Int, completion: @escaping (PlayersResponse?, (any Error)?) -> Void) {
+        service.fetchTennisPlayersFromAPI(map: map, leagueId: leagueId) { response, error in
+            if let error = error {
+                completion(nil,error)
+            }
+            guard let response = response else {
+                completion(nil,error)
+                return
+            }
+            completion(response,nil)
+        }
+    }
 
 }
