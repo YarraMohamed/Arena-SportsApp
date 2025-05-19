@@ -43,6 +43,7 @@ class LeaguesViewController: UIViewController {
 extension LeaguesViewController : LeaguesProtocol{
     func renderLeagues(result: LeaguesResponse?) {
         DispatchQueue.main.async { [weak self] in
+            self?.isLoadingLeagues = false
             self?.leagues = result?.result ?? []
             self?.tableView.reloadData()
         }
@@ -55,16 +56,25 @@ extension LeaguesViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(isLoadingLeagues || leagues.isEmpty){
+            return 1
+        }
         return leagues.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "leagueCell", for: indexPath) as! LeagueCell
-        cell.delegate = self
-        cell.leagueTitleLabel.text = leagues[indexPath.row].leagueName
-        cell.leagueTopTeamLabel.text = leagues[indexPath.row].countryName
-        cell.leagueImageView.kf.setImage(with: URL(string: leagues[indexPath.row].leagueLogo ?? "https://static.becharge.be/img/be/placeholder.png"), placeholder: UIImage(named: "leaguePlaceholder"))
-    
+        if isLoadingLeagues {
+            cell.startShimmeringAll()
+            cell.leagueTitleLabel.text = ""
+            cell.leagueTopTeamLabel.text = ""
+        }else{
+            cell.stopShimmer()
+            cell.delegate = self
+            cell.leagueTitleLabel.text = leagues[indexPath.row].leagueName
+            cell.leagueTopTeamLabel.text = leagues[indexPath.row].countryName
+            cell.leagueImageView.kf.setImage(with: URL(string: leagues[indexPath.row].leagueLogo ?? "https://static.becharge.be/img/be/placeholder.png"), placeholder: UIImage(named: "leaguePlaceholder"))
+        }
         return cell
     }
     

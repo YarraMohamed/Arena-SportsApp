@@ -185,7 +185,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="402" height="103"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="premierLeagueLogo" translatesAutoresizingMaskIntoConstraints="NO" id="p8h-QF-u7F">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p8h-QF-u7F">
                                                     <rect key="frame" x="10" y="0.0" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="p8h-QF-u7F" secondAttribute="height" multiplier="1:1" id="NnK-zd-jVO"/>
@@ -641,7 +641,6 @@ Let’s explore together!</string>
         <image name="empty" width="512" height="512"/>
         <image name="favourite" width="35" height="35"/>
         <image name="filledStar" width="100" height="100"/>
-        <image name="premierLeagueLogo" width="1000" height="563"/>
         <image name="ronaldo" width="400" height="400"/>
         <image name="screen1" width="350" height="350"/>
         <image name="screen2" width="350" height="350"/>
