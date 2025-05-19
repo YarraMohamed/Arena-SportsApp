@@ -199,6 +199,8 @@ class MatchesCollectionViewController: UICollectionViewController,
                 vc.modalPresentationStyle = .overCurrentContext
                 vc.sportId = sportId
                 vc.teamId = teams[indexPath.row].teamKey
+                vc.teamLogo = teams[indexPath.row].teamLogo
+                vc.teamName = teams[indexPath.row].teamName
                 self.present(vc, animated: false)
         }
     }

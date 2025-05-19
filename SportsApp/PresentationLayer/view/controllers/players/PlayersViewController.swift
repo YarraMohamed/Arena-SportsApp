@@ -13,7 +13,7 @@ class PlayersViewController: UIViewController, PlayersProtocol{
     private var coach : Player?
     private var isLoadingPlayers = true
     
-    var sections : [String] = ["Top Scorer", "Coach", "Players"]
+    var sections : [String] = ["Coach", "Players"]
     var presenter = PlayersPresenter(playersUsecase: PlayersUseCase(repo: PlayersRepository(service: PlayersService())))
     var sportId : Int?
     var teamId : Int?
@@ -49,9 +49,7 @@ extension PlayersViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-            case 0:
-            return 1
-        case 1:
+        case 0:
             return isLoadingPlayers ? 0 : 1
         default:
             return isLoadingPlayers ? 0 : players.count
@@ -63,22 +61,20 @@ extension PlayersViewController: UITableViewDelegate, UITableViewDataSource {
         if isLoadingPlayers {
             
         } else {
+            let placeholder = UIImage(named: "playerPlaceholder")
             switch indexPath.section {
-            case 0:
-                if !players.isEmpty{
-                    cell.playerLabel.text = ""
-                    cell.playerImgView.kf.setImage(with: URL(string: players[indexPath.row].playerImage ?? "https://mahoneycommercial.com/wp-content/uploads/2024/06/421-4212617_person-placeholder-image-transparent-hd-png-download.png"), placeholder: UIImage(named: "playerPlaceholder"))
-                }
-            case 1:
-                if coach != nil{
-                    cell.playerLabel.text = coach?.playerName ?? "N/A"
-                    cell.playerImgView.kf.setImage(with: URL(string: coach?.playerImage ?? "https://mahoneycommercial.com/wp-content/uploads/2024/06/421-4212617_person-placeholder-image-transparent-hd-png-download.png"), placeholder: UIImage(named: "playerPlaceholder"))
-                }
-            default:
-                if !players.isEmpty{
-                    cell.playerLabel.text = players[indexPath.row].playerName
-                    cell.playerImgView.kf.setImage(with: URL(string: players[indexPath.row].playerImage ?? "https://mahoneycommercial.com/wp-content/uploads/2024/06/421-4212617_person-placeholder-image-transparent-hd-png-download.png"), placeholder: UIImage(named: "playerPlaceholder"))
-                }
+                case 0:
+                    if coach != nil{
+                        cell.playerName.text = coach?.playerName ?? "N/A"
+                        cell.playerType.text = ""
+                        cell.playerImgView.kf.setImage(with: URL(string: coach?.playerImage ?? "https://mahoneycommercial.com/wp-content/uploads/2024/06/421-4212617_person-placeholder-image-transparent-hd-png-download.png"), placeholder: placeholder)
+                    }
+                default:
+                    if !players.isEmpty{
+                        cell.playerName.text = players[indexPath.row].playerName
+                        cell.playerType.text = players[indexPath.row].playerType
+                        cell.playerImgView.kf.setImage(with: URL(string: players[indexPath.row].playerImage ?? "https://mahoneycommercial.com/wp-content/uploads/2024/06/421-4212617_person-placeholder-image-transparent-hd-png-download.png"), placeholder: placeholder)
+                    }
             }
         }
         
@@ -99,7 +95,7 @@ extension PlayersViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 120
     }
 }
 
