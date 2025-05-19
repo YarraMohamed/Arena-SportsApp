@@ -26,17 +26,4 @@ class FixturesRepository : FixturesRepositoryProtocol {
             completion(fixtures,nil)
         }
     }
-
-    func getTeams(map: Int, leagueId: Int, completion: @escaping (TeamsResponse?, Error?) -> Void) {
-        service.fetchTeamsFromAPI(map: map, leagueId: leagueId) { response, error in
-            if let error = error {
-                completion(nil,error)
-            }
-            guard let response = response else {
-                completion(nil,error)
-                return
-            }
-            completion(response,nil)
-        }
-    }
 }

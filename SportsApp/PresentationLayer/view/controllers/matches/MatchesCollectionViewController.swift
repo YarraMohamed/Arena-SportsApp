@@ -15,7 +15,7 @@ private let teamsReuseIdentifier = "teams"
 
 
 class MatchesCollectionViewController: UICollectionViewController,
-                                       UICollectionViewDelegateFlowLayout, MatchesProtocol{
+                                       UICollectionViewDelegateFlowLayout, MatchesProtocol, TeamsProtocol{
     
     private let sectionTitles = ["Upcoming Matches", "Past Matches", "Teams"]
     private var comingMatches = [Fixtures]()
@@ -30,6 +30,8 @@ class MatchesCollectionViewController: UICollectionViewController,
     var sportId : Int?
     var leagueId : Int?
     var presenter = MatchesPresenter(fixturesUsecase: FetchFixtures(repo: FixturesRepository(service: FixturesService())))
+    
+    var teamsPresenter = TeamsPresenter(teamsUsecase: TeamsUseCase(repo: TeamsRepository(service: TeamsService())))
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +47,12 @@ class MatchesCollectionViewController: UICollectionViewController,
         self.navigationItem.title = selectedLeagueTitle ?? ""
         
         presenter.setTableView(self)
+        teamsPresenter.setTableView(self)
         
         presenter.getUpcomingMatches(map: sportId ?? 1, from: currentDateFormatter(), to: futureDateFormatter(),leagueId:    String(describing: leagueId ?? 0))
         presenter.getPastMatches(map:sportId ?? 1, from: pastYearDataFormatter(), to: pastDateFormatter(), leagueId:    String(describing: leagueId ?? 0))
         
-        presenter.getTeams(map: sportId ?? 1, leagueId: leagueId ?? 204)
+        teamsPresenter.getTeams(map: sportId ?? 1, leagueId: leagueId ?? 204)
     
         setupLayout()
     }
@@ -194,6 +197,10 @@ class MatchesCollectionViewController: UICollectionViewController,
             default:
                 let vc = CustomModalViewController()
                 vc.modalPresentationStyle = .overCurrentContext
+                vc.sportId = sportId
+                vc.teamId = teams[indexPath.row].teamKey
+                vc.teamLogo = teams[indexPath.row].teamLogo
+                vc.teamName = teams[indexPath.row].teamName
                 self.present(vc, animated: false)
         }
     }

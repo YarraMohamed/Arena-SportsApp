@@ -30,11 +30,14 @@ struct Team : Decodable {
 struct Player : Decodable {
     let playerKey : Int?
     let playerName : String?
+    let playerType : String?
     let playerImage : String?
     
     enum CodingKeys : String, CodingKey {
         case playerKey = "player_key"
         case playerName = "player_name"
+        case playerType = "player_type"
         case playerImage = "player_image"
     }
 }
+
