@@ -121,6 +121,7 @@ class MatchesCollectionViewController: UICollectionViewController,
             if(isLoadingPastMatches || pastMatches.isEmpty){
                 return 1
             }
+
             return isLoadingPastMatches ? 1 :  pastMatches.count
             
         default :
