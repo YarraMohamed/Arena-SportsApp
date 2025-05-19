@@ -99,9 +99,12 @@ class MatchesCollectionViewController: UICollectionViewController,
             if(isLoadingPastMatches || pastMatches.isEmpty){
                 return 1
             }
-            return isLoadingPastMatches ? 1 :  pastMatches.count
+            return pastMatches.count
         default :
-            return isLoadingTeams ? 1 : teams.count
+            if isLoadingTeams || teams.isEmpty{
+                return 1
+            }
+            return teams.count
         }
     }
 
@@ -158,11 +161,10 @@ class MatchesCollectionViewController: UICollectionViewController,
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: teamsReuseIdentifier, for: indexPath) as! TeamCell
             
-            if isLoadingTeams {
-//                cell.startShimmeringAll()
-//                cell.vsLabel.text = ""
+            if isLoadingTeams || teams.isEmpty {
+                cell.startShimmeringAll()
             }else{
-//                cell.stopShimmer()
+                cell.stopShimmer()
                 cell.teamImageView.kf.setImage(with: URL(string: teams[indexPath.row].teamLogo ?? "https://static.becharge.be/img/be/placeholder.png"), placeholder: UIImage(named: "leaguePlaceholder"))
                 
                 cell.teamName.text = teams[indexPath.row].teamName
