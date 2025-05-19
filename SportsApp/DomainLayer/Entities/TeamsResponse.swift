@@ -18,35 +18,26 @@ struct Team : Decodable {
     let teamName : String?
     let teamLogo : String?
     let players : [Player]?
-    let coaches : [Coach]?
     
     enum CodingKeys : String, CodingKey {
         case teamKey = "team_key"
         case teamName = "team_name"
         case teamLogo = "team_logo"
         case players
-        case coaches
     }
 }
 
 struct Player : Decodable {
     let playerKey : Int?
     let playerName : String?
+    let playerType : String?
     let playerImage : String?
     
     enum CodingKeys : String, CodingKey {
         case playerKey = "player_key"
         case playerName = "player_name"
+        case playerType = "player_type"
         case playerImage = "player_image"
     }
 }
 
-struct Coach : Decodable {
-    let coachName : String?
-    let coachCountry : String?
-    
-    enum CodingKeys : String, CodingKey {
-        case coachName = "coach_name"
-        case coachCountry = "coach_country"
-    }
-}

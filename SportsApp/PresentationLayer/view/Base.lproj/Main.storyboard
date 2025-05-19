@@ -544,10 +544,10 @@ Let’s explore together!</string>
             </objects>
             <point key="canvasLocation" x="-4204" y="566"/>
         </scene>
-        <!--Team Details View Controller-->
+        <!--Players View Controller-->
         <scene sceneID="3th-Kl-tRk">
             <objects>
-                <viewController storyboardIdentifier="TeamDetailsViewController" id="a7s-z0-gHG" customClass="TeamDetailsViewController" customModule="Arena" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayersViewController" id="a7s-z0-gHG" customClass="PlayersViewController" customModule="Arena" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fby-yC-mR4">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -556,32 +556,55 @@ Let’s explore together!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="teamDetailsCell" rowHeight="101" id="me8-vK-Raf" customClass="TeamDetailsCell" customModule="Arena" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerCell" rowHeight="101" id="me8-vK-Raf" customClass="PlayerCell" customModule="Arena" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="402" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="me8-vK-Raf" id="yAL-58-RmU">
                                             <rect key="frame" x="0.0" y="0.0" width="402" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cristiano Ronaldo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLl-Ud-WH1">
-                                                    <rect key="frame" x="81" y="39" width="146" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ronaldo" translatesAutoresizingMaskIntoConstraints="NO" id="lip-vN-Iru">
+                                                    <rect key="frame" x="10" y="0.0" width="101" height="101"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="lip-vN-Iru" secondAttribute="height" multiplier="1:1" id="cMV-xp-ukB"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forward" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAM-vL-FOj">
+                                                    <rect key="frame" x="126" y="59" width="256" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cristiano Ronaldo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLl-Ud-WH1">
+                                                    <rect key="frame" x="126" y="30" width="256" height="23"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ronaldo" translatesAutoresizingMaskIntoConstraints="NO" id="lip-vN-Iru">
-                                                    <rect key="frame" x="0.0" y="20" width="60" height="60"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hAM-vL-FOj" firstAttribute="top" secondItem="eLl-Ud-WH1" secondAttribute="bottom" constant="6" id="3ib-iE-FUl"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="hAM-vL-FOj" secondAttribute="bottom" constant="9" id="55T-aZ-XrI"/>
+                                                <constraint firstItem="hAM-vL-FOj" firstAttribute="trailing" secondItem="eLl-Ud-WH1" secondAttribute="trailing" id="KDo-8q-ndq"/>
+                                                <constraint firstAttribute="bottom" secondItem="lip-vN-Iru" secondAttribute="bottom" id="M2A-GP-MPn"/>
+                                                <constraint firstItem="lip-vN-Iru" firstAttribute="top" secondItem="yAL-58-RmU" secondAttribute="top" id="PJ8-nt-FvJ"/>
+                                                <constraint firstItem="eLl-Ud-WH1" firstAttribute="leading" secondItem="lip-vN-Iru" secondAttribute="trailing" constant="15" id="Uce-hm-vpW"/>
+                                                <constraint firstItem="lip-vN-Iru" firstAttribute="leading" secondItem="yAL-58-RmU" secondAttribute="leading" constant="10" id="aW2-t2-nOx"/>
+                                                <constraint firstItem="hAM-vL-FOj" firstAttribute="leading" secondItem="eLl-Ud-WH1" secondAttribute="leading" id="hQq-zh-AVX"/>
+                                                <constraint firstItem="eLl-Ud-WH1" firstAttribute="width" secondItem="yAL-58-RmU" secondAttribute="width" constant="-146" id="pn0-vZ-Htk"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="playerImgView" destination="lip-vN-Iru" id="2Aa-ZW-Hie"/>
-                                            <outlet property="playerLabel" destination="eLl-Ud-WH1" id="Afu-Kt-aBJ"/>
+                                            <outlet property="playerName" destination="eLl-Ud-WH1" id="ksW-Da-gL1"/>
+                                            <outlet property="playerType" destination="hAM-vL-FOj" id="q0V-0R-8bS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="a7s-z0-gHG" id="wRp-T7-Wdl"/>
+                                    <outlet property="delegate" destination="a7s-z0-gHG" id="MJ3-af-l3e"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gb5-2M-muT"/>
@@ -595,12 +618,12 @@ Let’s explore together!</string>
                     </view>
                     <navigationItem key="navigationItem" id="1it-WF-Qjm"/>
                     <connections>
-                        <outlet property="teamsDetailsTableView" destination="1Zy-To-loM" id="aTa-Ig-2Fp"/>
+                        <outlet property="playersTableView" destination="1Zy-To-loM" id="lpo-sp-3ZI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYh-vD-0J7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4513" y="203"/>
+            <point key="canvasLocation" x="4511.9402985074621" y="202.51716247139586"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.44705885649999999" green="0.43921568989999998" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

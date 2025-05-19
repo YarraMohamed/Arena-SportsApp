@@ -197,6 +197,10 @@ class MatchesCollectionViewController: UICollectionViewController,
             default:
                 let vc = CustomModalViewController()
                 vc.modalPresentationStyle = .overCurrentContext
+                vc.sportId = sportId
+                vc.teamId = teams[indexPath.row].teamKey
+                vc.teamLogo = teams[indexPath.row].teamLogo
+                vc.teamName = teams[indexPath.row].teamName
                 self.present(vc, animated: false)
         }
     }

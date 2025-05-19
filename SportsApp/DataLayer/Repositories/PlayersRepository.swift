@@ -1,5 +1,5 @@
 //
-//  TeamsRepository.swift
+//  PlayersRepository.swift
 //  Arena
 //
 //  Created by MacBook on 19/05/2025.
@@ -7,15 +7,15 @@
 
 import Foundation
 
-class TeamsRepository : TeamsRepositoryProtocol{
+class PlayersRepository : PlayersRepositoryProtocol{
     
-    let service : TeamsServiceProtocol
-    init(service: TeamsServiceProtocol) {
+    let service : PlayersServiceProtocol
+    init(service: PlayersServiceProtocol) {
         self.service = service
     }
     
-    func getTeams(map: Int, leagueId: Int, completion: @escaping (TeamsResponse?, Error?) -> Void) {
-        service.fetchTeamsFromAPI(map: map, leagueId: leagueId) { response, error in
+    func getPlayers(map: Int, teamId: Int, completion: @escaping (PlayersResponse?, (any Error)?) -> Void) {
+        service.fetchPlayersFromAPI(map: map, teamId: teamId) { response, error in
             if let error = error {
                 completion(nil,error)
             }
@@ -26,6 +26,5 @@ class TeamsRepository : TeamsRepositoryProtocol{
             completion(response,nil)
         }
     }
+
 }
-
-
