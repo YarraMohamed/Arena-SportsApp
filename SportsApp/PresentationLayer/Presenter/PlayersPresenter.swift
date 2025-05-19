@@ -34,4 +34,18 @@ class PlayersPresenter {
         }
     }
     
+    func getTennisPlayers(map:Int, leagueId:Int){
+        playersUsecase.fetchTennisPlayers(map: map, leagueId: leagueId) { result, error in
+            if let error = error{
+                print("\(error.localizedDescription)")
+            }
+            guard let result = result else {
+                self.playersViewController?.renderPlayers(result: nil)
+                return
+            }
+            
+            self.playersViewController?.renderPlayers(result: result)
+        }
+    }
+    
 }
