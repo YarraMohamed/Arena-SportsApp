@@ -544,10 +544,10 @@ Let’s explore together!</string>
             </objects>
             <point key="canvasLocation" x="-4204" y="566"/>
         </scene>
-        <!--Team Details View Controller-->
+        <!--Players View Controller-->
         <scene sceneID="3th-Kl-tRk">
             <objects>
-                <viewController storyboardIdentifier="TeamDetailsViewController" id="a7s-z0-gHG" customClass="TeamDetailsViewController" customModule="Arena" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayersViewController" id="a7s-z0-gHG" customClass="PlayersViewController" customModule="Arena" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fby-yC-mR4">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -556,7 +556,7 @@ Let’s explore together!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="teamDetailsCell" rowHeight="101" id="me8-vK-Raf" customClass="TeamDetailsCell" customModule="Arena" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerCell" rowHeight="101" id="me8-vK-Raf" customClass="PlayerCell" customModule="Arena" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="402" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="me8-vK-Raf" id="yAL-58-RmU">
@@ -582,6 +582,10 @@ Let’s explore together!</string>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="a7s-z0-gHG" id="wRp-T7-Wdl"/>
+                                    <outlet property="delegate" destination="a7s-z0-gHG" id="MJ3-af-l3e"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gb5-2M-muT"/>
@@ -595,7 +599,7 @@ Let’s explore together!</string>
                     </view>
                     <navigationItem key="navigationItem" id="1it-WF-Qjm"/>
                     <connections>
-                        <outlet property="teamsDetailsTableView" destination="1Zy-To-loM" id="aTa-Ig-2Fp"/>
+                        <outlet property="playersTableView" destination="1Zy-To-loM" id="lpo-sp-3ZI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYh-vD-0J7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

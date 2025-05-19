@@ -9,6 +9,9 @@ import UIKit
 
 class CustomModalViewController: UIViewController {
     
+    var sportId : Int?
+    var teamId : Int?
+    
     // MARK: - Views
     private lazy var headerImageView: UIImageView = {
         let imageView = UIImageView()
@@ -37,11 +40,15 @@ class CustomModalViewController: UIViewController {
     }()
     
     // MARK: - Table Content
-    private lazy var tableContentVC: TeamDetailsViewController = {
+    private lazy var tableContentVC: PlayersViewController = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(
-            withIdentifier: "TeamDetailsViewController"
-        ) as! TeamDetailsViewController
+            withIdentifier: "PlayersViewController"
+        ) as! PlayersViewController
+        
+        vc.sportId = sportId
+        vc.teamId = teamId
+        
         return vc
     }()
     
