@@ -50,7 +50,7 @@ extension PlayersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return isLoadingPlayers ? 0 : 1
+            return isLoadingPlayers ? 0 : coach != nil ? 1 : 0
         default:
             return isLoadingPlayers ? 0 : players.count
         }
