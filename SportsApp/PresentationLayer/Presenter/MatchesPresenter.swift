@@ -21,31 +21,31 @@ class MatchesPresenter {
     }
     
     func getUpcomingMatches(map:Int, from:String, to:String, leagueId:String){
-        fixturesUsecase.fetchFixtures(map:map, from:from, to: to, leagueId: leagueId) { result, err in
+        fixturesUsecase.fetchFixtures(map:map, from:from, to: to, leagueId: leagueId) {[weak self] result, err in
             if let err = err{
                 print("\(err.localizedDescription)")
             }
             guard let result = result else {
-                self.matchesViewController?.renderUpcomingMatches(result: nil)
+                self?.matchesViewController?.renderUpcomingMatches(result: nil)
                 return
             }
             
-            self.matchesViewController?.renderUpcomingMatches(result: result)
+            self?.matchesViewController?.renderUpcomingMatches(result: result)
         }
     }
     
     func getPastMatches(map:Int, from:String, to:String, leagueId:String){
-        fixturesUsecase.fetchFixtures(map:map,from:from, to: to, leagueId: leagueId) { result, err in
+        fixturesUsecase.fetchFixtures(map:map,from:from, to: to, leagueId: leagueId) {[weak self] result, err in
             if let err = err{
+                print("\(err.localizedDescription)")
                 return
-               // print("\(err.localizedDescription)")
             }
             guard let result = result else {
-                self.matchesViewController?.renderPastMatches(result: nil)
+                self?.matchesViewController?.renderPastMatches(result: nil)
                 return
             }
             
-            self.matchesViewController?.renderPastMatches(result: result)
+            self?.matchesViewController?.renderPastMatches(result: result)
         }
     }
     
