@@ -10,16 +10,16 @@ import Kingfisher
 
 class CustomModalViewController: UIViewController {
     
-    var sportId : Int?
-    var teamId : Int?
-    var teamLogo : String?
-    var teamName : String?
+    var sportId: Int?
+    var teamId: Int?
+    var teamLogo: String?
+    var teamName: String?
     
     // MARK: - Views
     private lazy var headerView: UIView = {
-            let view = UIView()
-            view.translatesAutoresizingMaskIntoConstraints = false
-            return view
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     private lazy var headerImageView: UIImageView = {
@@ -27,19 +27,20 @@ class CustomModalViewController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.kf.setImage(with: URL(string: teamLogo ?? "https://static.becharge.be/img/be/placeholder.png"), placeholder: UIImage(named: "leaguePlaceholder"))
+        imageView.kf.setImage(with: URL(string: teamLogo ?? "https://static.becharge.be/img/be/placeholder.png"),
+                              placeholder: UIImage(named: "leaguePlaceholder"))
         return imageView
     }()
     
     private lazy var teamNameLabel: UILabel = {
-            let label = UILabel()
-            label.textAlignment = .center
-            label.font = UIFont.boldSystemFont(ofSize: 24)
-            label.textColor = .black
-            label.text = teamName ?? "Liverpool"
-            label.translatesAutoresizingMaskIntoConstraints = false
-            return label
-        }()
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.textColor = .black
+        label.text = teamName ?? "Liverpool"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -72,16 +73,20 @@ class CustomModalViewController: UIViewController {
     }()
     
     // MARK: - Layout Properties
-    private let defaultHeight: CGFloat = 500
-    private let dismissibleHeight: CGFloat = 200
-    private let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 64
-    private var currentContainerHeight: CGFloat = 500
+    private var defaultHeight: CGFloat = 0
+    private let dismissibleHeightPercentage: CGFloat = 0.3
+    private var maximumContainerHeight: CGFloat {
+        return view.bounds.height - 64
+    }
+    private var currentContainerHeight: CGFloat = 0
     private var containerViewHeightConstraint: NSLayoutConstraint?
     private var containerViewBottomConstraint: NSLayoutConstraint?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        defaultHeight = view.bounds.height * 0.7
+        currentContainerHeight = defaultHeight
         setupViews()
         setupConstraints()
         setupGestures()
@@ -94,22 +99,28 @@ class CustomModalViewController: UIViewController {
         animatePresentContainer()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: { _ in
+            if self.currentContainerHeight > self.maximumContainerHeight {
+                self.animateContainerHeight(self.maximumContainerHeight)
+            }
+            self.currentContainerHeight = self.containerViewHeightConstraint?.constant ?? self.defaultHeight
+        })
+    }
+    
     // MARK: - Setup
     private func setupViews() {
         view.backgroundColor = .clear
         
-        // Dimmed View
         view.addSubview(dimmedView)
-        
-        // Container View
         view.addSubview(containerView)
         
-        // Header Image
         containerView.addSubview(headerView)
         headerView.addSubview(headerImageView)
         headerView.addSubview(teamNameLabel)
         
-        // Table Content
         addChild(tableContentVC)
         containerView.addSubview(tableContentVC.view)
         tableContentVC.didMove(toParent: self)
@@ -131,11 +142,15 @@ class CustomModalViewController: UIViewController {
         ])
         
         // Header View
+        let headerHeightMultiplier = headerView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.4)
+        headerHeightMultiplier.priority = .defaultHigh
+        headerHeightMultiplier.isActive = true
+        headerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 150).isActive = true
+        
         NSLayoutConstraint.activate([
             headerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            headerView.topAnchor.constraint(equalTo: containerView.topAnchor),
-            headerView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.4)
+            headerView.topAnchor.constraint(equalTo: containerView.topAnchor)
         ])
         
         // Header Image
@@ -147,18 +162,18 @@ class CustomModalViewController: UIViewController {
         ])
         
         // Team Name Label
-       NSLayoutConstraint.activate([
-           teamNameLabel.topAnchor.constraint(equalTo: headerImageView.bottomAnchor, constant: 8),
-           teamNameLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-           teamNameLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-           teamNameLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -8)
-       ])
+        NSLayoutConstraint.activate([
+            teamNameLabel.topAnchor.constraint(equalTo: headerImageView.bottomAnchor, constant: 8),
+            teamNameLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+            teamNameLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+            teamNameLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -8)
+        ])
         
         teamNameLabel.adjustsFontSizeToFitWidth = true
-         teamNameLabel.minimumScaleFactor = 0.7
-         teamNameLabel.numberOfLines = 1
+        teamNameLabel.minimumScaleFactor = 0.7
+        teamNameLabel.numberOfLines = 1
         
-        // Table Content Constraints
+        // Table Content
         tableContentVC.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableContentVC.view.topAnchor.constraint(equalTo: teamNameLabel.bottomAnchor, constant: 20),
@@ -172,7 +187,6 @@ class CustomModalViewController: UIViewController {
         containerViewBottomConstraint = containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: defaultHeight)
         containerViewHeightConstraint?.isActive = true
         containerViewBottomConstraint?.isActive = true
-        
     }
     
     // MARK: - Gestures
@@ -201,7 +215,8 @@ class CustomModalViewController: UIViewController {
                 view.layoutIfNeeded()
             }
         case .ended:
-            if newHeight < dismissibleHeight {
+            let dismissThreshold = currentContainerHeight * dismissibleHeightPercentage
+            if newHeight < dismissThreshold {
                 animateDismissView()
             }
             else if newHeight < defaultHeight {
