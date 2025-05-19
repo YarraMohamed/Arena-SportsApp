@@ -49,17 +49,4 @@ class MatchesPresenter {
         }
     }
     
-    func getTeams(map:Int, leagueId:Int){
-        fixturesUsecase.fetchTeams(map: map, leagueId: leagueId) { result, error in
-            if let error = error{
-                print("\(error.localizedDescription)")
-            }
-            guard let result = result else {
-                self.matchesViewController?.renderTeams(result: nil)
-                return
-            }
-            
-            self.matchesViewController?.renderTeams(result: result)
-        }
-    }
 }

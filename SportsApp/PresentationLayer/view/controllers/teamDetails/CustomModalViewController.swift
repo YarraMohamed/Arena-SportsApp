@@ -10,6 +10,15 @@ import UIKit
 class CustomModalViewController: UIViewController {
     
     // MARK: - Views
+    private lazy var headerImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "ronaldo")
+        return imageView
+    }()
+    
     private lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -69,6 +78,9 @@ class CustomModalViewController: UIViewController {
         // Container View
         view.addSubview(containerView)
         
+        // Header Image
+        containerView.addSubview(headerImageView)
+        
         // Table Content
         addChild(tableContentVC)
         containerView.addSubview(tableContentVC.view)
@@ -90,10 +102,18 @@ class CustomModalViewController: UIViewController {
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
         
+        // Header Image Constraints
+        NSLayoutConstraint.activate([
+            headerImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            headerImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            headerImageView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            headerImageView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.3)
+        ])
+        
         // Table Content Constraints
         tableContentVC.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tableContentVC.view.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
+            tableContentVC.view.topAnchor.constraint(equalTo: headerImageView.bottomAnchor, constant: 20),
             tableContentVC.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
             tableContentVC.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             tableContentVC.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
@@ -189,5 +209,3 @@ class CustomModalViewController: UIViewController {
         }
     }
 }
-
-
