@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C10B3B0D2DDBE97B00F79942 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = C10B3B0C2DDBE97B00F79942 /* Reachability */; };
 		C1D9ACDA2DD92981004CD216 /* ShimmerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C1D9ACD92DD92981004CD216 /* ShimmerSwift */; };
 		C1D9ACDD2DD92992004CD216 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C1D9ACDC2DD92992004CD216 /* Kingfisher */; };
 		C1F5ECA92DD7F3820032FFF3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C1F5ECA82DD7F3820032FFF3 /* Alamofire */; };
@@ -43,6 +44,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1D9ACDD2DD92992004CD216 /* Kingfisher in Frameworks */,
+				C10B3B0D2DDBE97B00F79942 /* Reachability in Frameworks */,
 				C1D9ACDA2DD92981004CD216 /* ShimmerSwift in Frameworks */,
 				C1F5ECA92DD7F3820032FFF3 /* Alamofire in Frameworks */,
 			);
@@ -90,6 +92,7 @@
 				C1F5ECA82DD7F3820032FFF3 /* Alamofire */,
 				C1D9ACD92DD92981004CD216 /* ShimmerSwift */,
 				C1D9ACDC2DD92992004CD216 /* Kingfisher */,
+				C10B3B0C2DDBE97B00F79942 /* Reachability */,
 			);
 			productName = SportsApp;
 			productReference = C1ADB9CF2DD0DD1E007E8E35 /* Arena.app */;
@@ -123,6 +126,7 @@
 				C1F5ECA72DD7F3820032FFF3 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C1D9ACD82DD92981004CD216 /* XCRemoteSwiftPackageReference "ShimmerSwift" */,
 				C1D9ACDB2DD92992004CD216 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				C10B3B0B2DDBE97B00F79942 /* XCRemoteSwiftPackageReference "Reachability" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C1ADB9D02DD0DD1E007E8E35 /* Products */;
@@ -352,6 +356,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C10B3B0B2DDBE97B00F79942 /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		C1D9ACD82DD92981004CD216 /* XCRemoteSwiftPackageReference "ShimmerSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BeauNouvelle/ShimmerSwift";
@@ -379,6 +391,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C10B3B0C2DDBE97B00F79942 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C10B3B0B2DDBE97B00F79942 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
 		C1D9ACD92DD92981004CD216 /* ShimmerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C1D9ACD82DD92981004CD216 /* XCRemoteSwiftPackageReference "ShimmerSwift" */;
