@@ -122,7 +122,7 @@ class MatchesCollectionViewController: UICollectionViewController,
                 return 1
             }
 
-            return isLoadingPastMatches ? 1 :  pastMatches.count
+            return pastMatches.count
             
         default :
             switch sportId{
@@ -130,10 +130,13 @@ class MatchesCollectionViewController: UICollectionViewController,
                 if(isLoadingPlayers || players.isEmpty){
                     return 1
                 }
-                return isLoadingPlayers ? 1 : players.count
+                return players.count
                 
                 default :
-                    return isLoadingTeams ? 1 : teams.count
+                if isLoadingTeams || teams.isEmpty{
+                    return 1
+                }
+                return teams.count
             }
             
         }
@@ -194,27 +197,23 @@ class MatchesCollectionViewController: UICollectionViewController,
             
             switch sportId{
             case 4:
-                if isLoadingPlayers{
-                    // cell.startShimmeringAll()
-                    // cell.vsLabel.text = ""
-
+                if isLoadingPlayers || players.isEmpty{
+                    cell.startShimmeringAll()
                 }else{
-    //              cell.stopShimmer()
+                  cell.stopShimmer()
                     cell.teamImageView.kf.setImage(with: URL(string: players[indexPath.row].playerImage ?? "https://static.becharge.be/img/be/placeholder.png"), placeholder: UIImage(named: "leaguePlaceholder"))
-                    
                     cell.teamName.text = players[indexPath.row].playerName
                 }
                 
                 default :
-                if isLoadingTeams {
-        //                cell.startShimmeringAll()
-        //                cell.vsLabel.text = ""
-                    }else{
-        //                cell.stopShimmer()
-                        cell.teamImageView.kf.setImage(with: URL(string: teams[indexPath.row].teamLogo ?? "https://static.becharge.be/img/be/placeholder.png"), placeholder: UIImage(named: "leaguePlaceholder"))
-                        
-                        cell.teamName.text = teams[indexPath.row].teamName
-                    }
+                if isLoadingTeams || teams.isEmpty {
+                    cell.startShimmeringAll()
+                }else{
+                    cell.stopShimmer()
+                    cell.teamImageView.kf.setImage(with: URL(string: teams[indexPath.row].teamLogo ?? "https://static.becharge.be/img/be/placeholder.png"), placeholder: UIImage(named: "leaguePlaceholder"))
+                    
+                    cell.teamName.text = teams[indexPath.row].teamName
+                }
             }
             
             return cell
