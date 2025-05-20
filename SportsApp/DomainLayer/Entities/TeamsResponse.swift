@@ -10,7 +10,11 @@ import Foundation
 struct TeamsResponse: Decodable {
     let success : Int
     let result : [Team]?
-   
+    
+    init(success:Int, result: [Team]) {
+        self.success = success
+        self.result = result
+    }
 }
 
 struct Team : Decodable {
@@ -18,6 +22,13 @@ struct Team : Decodable {
     let teamName : String?
     let teamLogo : String?
     let players : [Player]?
+    
+    init(teamKey:Int, teamName:String, teamLogo:String, players:[Player]){
+        self.teamKey = teamKey
+        self.teamName = teamName
+        self.teamLogo = teamLogo
+        self.players = players
+    }
     
     enum CodingKeys : String, CodingKey {
         case teamKey = "team_key"
