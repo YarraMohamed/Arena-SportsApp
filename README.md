@@ -30,8 +30,12 @@ _Arena_ is an iOS sports app built with Swift, following the Clean Architecture 
      - Display the teams of specific league logos.
  
 ### 4 - Team Details Screen
-
 - Elegant UI showing selected team details.
+  
+## ✨ Additional Features
+- Onboarding Screens
+- Localization Support
+- Dark Theme UI
 
 ## 🛠️ Testing & Architecture
 
@@ -39,10 +43,6 @@ _Arena_ is an iOS sports app built with Swift, following the Clean Architecture 
 - MVP (Model-View-Presenter)
 - Unit Testing using XCTest
 
-## ✨ Additional Features
-- Onboarding Screens
-- Localization Support
-- Dark Theme UI
 
 ## 📱 Tech Stack
 - Swift
