@@ -19,6 +19,11 @@ class FavouritesViewController: UIViewController, FavouritesProtocol {
     var favs = [Favourites]()
     var sections = [FavouriteSection]()
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.getFavs()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -190,10 +195,46 @@ extension FavouritesViewController  {
 extension FavouritesViewController: FavoriteCellDelegate {
     func didTapFavorite(in cell: FavouritesCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        let favorite = favs[indexPath.row]
-        print("Button tapped at row \(indexPath.row)")
-        print("Removed from favorites")
-        presenter.deleteFav(id: favorite.id)
-        favs.removeAll { $0.id == favorite.id }
+        let alert = UIAlertController(title: "Delete", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (_) in
+            guard let self = self else { return }
+            
+            let itemToDelete = self.sections[indexPath.section].items[indexPath.row]
+            
+            if let index = self.favs.firstIndex(where: { $0.id == itemToDelete.id }) {
+                self.favs.remove(at: index)
+            }
+            
+            self.sections[indexPath.section].items.remove(at: indexPath.row)
+            
+            
+            if self.sections[indexPath.section].items.isEmpty {
+                self.sections.remove(at: indexPath.section)
+                tableView.beginUpdates()
+                tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
+                tableView.endUpdates()
+            } else {
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.endUpdates()
+            }
+            
+            self.presenter.deleteFav(id: itemToDelete.id)
+            
+            if self.favs.isEmpty {
+                self.tableView.isHidden = true
+                self.img.isHidden = false
+            }
+            
+            self.tableView.reloadData()
         }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true)
+    }
 }
