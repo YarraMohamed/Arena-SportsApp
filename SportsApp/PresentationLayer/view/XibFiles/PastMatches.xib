@@ -20,18 +20,20 @@
                         <rect key="frame" x="250" y="40" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="6Q5-2l-jR4"/>
-                            <constraint firstAttribute="width" secondItem="biD-Db-hLv" secondAttribute="height" multiplier="1:1" id="Eoy-xX-A3P"/>
+                            <constraint firstAttribute="width" secondItem="biD-Db-hLv" secondAttribute="height" multiplier="1:1" id="jHg-So-yWX"/>
                             <constraint firstAttribute="height" constant="60" id="toL-9b-8vy"/>
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HCQ-B6-Ox7">
                         <rect key="frame" x="20" y="40" width="60" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="HCQ-B6-Ox7" secondAttribute="height" multiplier="1:1" id="vUN-0Z-kbJ"/>
+                            <constraint firstAttribute="width" constant="60" id="Bhq-gq-e4c"/>
+                            <constraint firstAttribute="height" constant="60" id="gSA-Gh-t6Y"/>
+                            <constraint firstAttribute="width" secondItem="HCQ-B6-Ox7" secondAttribute="height" multiplier="1:1" id="rWJ-se-hRo"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdE-FV-UvD">
-                        <rect key="frame" x="144.66666666666666" y="20" width="40.666666666666657" height="44"/>
+                        <rect key="frame" x="144.66666666666666" y="20" width="41" height="44"/>
                         <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
                         <color key="textColor" red="0.44705885649999999" green="0.43921568989999998" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
@@ -76,26 +78,26 @@
                 <constraints>
                     <constraint firstItem="MGY-zX-qKI" firstAttribute="centerX" secondItem="aVX-ld-tT5" secondAttribute="centerX" id="0Uf-kR-eea"/>
                     <constraint firstItem="6zE-NG-nPy" firstAttribute="top" secondItem="MGY-zX-qKI" secondAttribute="bottom" constant="2" id="3aW-5Y-Jgi"/>
-                    <constraint firstItem="ar4-zn-9PV" firstAttribute="width" secondItem="aVX-ld-tT5" secondAttribute="width" multiplier="0.272727" id="7gd-2x-fQ8"/>
-                    <constraint firstItem="m3s-qF-e6f" firstAttribute="centerX" secondItem="biD-Db-hLv" secondAttribute="centerX" id="8wF-CE-u8M"/>
-                    <constraint firstItem="ar4-zn-9PV" firstAttribute="centerX" secondItem="HCQ-B6-Ox7" secondAttribute="centerX" id="AGe-Zu-B32"/>
+                    <constraint firstItem="ar4-zn-9PV" firstAttribute="leading" secondItem="aVX-ld-tT5" secondAttribute="leading" constant="5" id="BL9-Ky-y6k"/>
                     <constraint firstItem="XdE-FV-UvD" firstAttribute="centerX" secondItem="aVX-ld-tT5" secondAttribute="centerX" id="EKu-si-7CM"/>
                     <constraint firstItem="ar4-zn-9PV" firstAttribute="top" secondItem="HCQ-B6-Ox7" secondAttribute="bottom" constant="10" id="FiO-Rh-Y3s"/>
                     <constraint firstAttribute="trailing" secondItem="biD-Db-hLv" secondAttribute="trailing" constant="20" id="HVy-RP-Tiy"/>
                     <constraint firstItem="MGY-zX-qKI" firstAttribute="top" secondItem="lAR-OQ-tmg" secondAttribute="bottom" constant="8" id="Hyd-dw-xAK"/>
                     <constraint firstItem="lAR-OQ-tmg" firstAttribute="top" secondItem="XdE-FV-UvD" secondAttribute="bottom" constant="5" id="KoD-zH-Uro"/>
-                    <constraint firstItem="ar4-zn-9PV" firstAttribute="leading" secondItem="aVX-ld-tT5" secondAttribute="leading" constant="5" id="MdH-rL-1sh"/>
                     <constraint firstItem="XdE-FV-UvD" firstAttribute="top" secondItem="aVX-ld-tT5" secondAttribute="top" constant="20" id="NX7-l1-TIK"/>
-                    <constraint firstItem="m3s-qF-e6f" firstAttribute="trailing" secondItem="aVX-ld-tT5" secondAttribute="trailing" constant="-5" id="Q2J-Id-6zX"/>
+                    <constraint firstItem="HCQ-B6-Ox7" firstAttribute="top" secondItem="biD-Db-hLv" secondAttribute="top" id="PcI-Ez-ZxN"/>
                     <constraint firstItem="pUn-pJ-uap" firstAttribute="centerY" secondItem="aVX-ld-tT5" secondAttribute="centerY" id="RN6-du-PrI"/>
+                    <constraint firstItem="ar4-zn-9PV" firstAttribute="centerX" secondItem="HCQ-B6-Ox7" secondAttribute="centerX" id="cHH-r3-t5n"/>
                     <constraint firstItem="m3s-qF-e6f" firstAttribute="top" secondItem="biD-Db-hLv" secondAttribute="bottom" constant="10" id="ehF-8d-vv1"/>
                     <constraint firstItem="HCQ-B6-Ox7" firstAttribute="leading" secondItem="aVX-ld-tT5" secondAttribute="leading" constant="20" id="fAa-NP-71l"/>
+                    <constraint firstItem="m3s-qF-e6f" firstAttribute="centerX" secondItem="biD-Db-hLv" secondAttribute="centerX" id="gOB-xv-TsV"/>
                     <constraint firstItem="biD-Db-hLv" firstAttribute="centerY" secondItem="aVX-ld-tT5" secondAttribute="centerY" constant="-10" id="lUL-Kg-aGD"/>
                     <constraint firstItem="6zE-NG-nPy" firstAttribute="centerX" secondItem="aVX-ld-tT5" secondAttribute="centerX" id="lkw-a8-2dq"/>
-                    <constraint firstItem="HCQ-B6-Ox7" firstAttribute="top" secondItem="biD-Db-hLv" secondAttribute="top" id="mnP-HF-wrJ"/>
                     <constraint firstItem="pUn-pJ-uap" firstAttribute="centerX" secondItem="aVX-ld-tT5" secondAttribute="centerX" id="oJH-hp-SUI"/>
                     <constraint firstItem="HCQ-B6-Ox7" firstAttribute="centerY" secondItem="aVX-ld-tT5" secondAttribute="centerY" constant="-10" id="pjs-3G-JOu"/>
+                    <constraint firstAttribute="trailing" secondItem="m3s-qF-e6f" secondAttribute="trailing" constant="5" id="wQ9-AS-9vV"/>
                     <constraint firstItem="lAR-OQ-tmg" firstAttribute="centerX" secondItem="aVX-ld-tT5" secondAttribute="centerX" id="xoV-JO-2Ky"/>
+                    <constraint firstItem="ar4-zn-9PV" firstAttribute="width" secondItem="aVX-ld-tT5" secondAttribute="width" multiplier="0.272727" id="yJL-C6-YGl"/>
                 </constraints>
             </collectionViewCellContentView>
             <connections>
