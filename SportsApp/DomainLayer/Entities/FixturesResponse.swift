@@ -10,6 +10,10 @@ import Foundation
 struct FixturesResponse: Decodable {
     var result : [Fixtures]
     
+    init(result: [Fixtures]) {
+        self.result = result
+    }
+    
     enum CodingKeys: CodingKey {
         case result
     }
@@ -32,7 +36,17 @@ struct Fixtures: Decodable {
     var opponentOneLogo : String
     var opponentTwoLogo : String
     var score : String
-
+    
+    init(date: String, time: String, opponentOne: String, opponentTwo: String, opponentOneLogo: String, opponentTwoLogo: String, score: String){
+        self.date = date
+        self.time = time
+        self.opponentOne = opponentOne
+        self.opponentTwo = opponentTwo
+        self.opponentOneLogo = opponentOneLogo
+        self.opponentTwoLogo = opponentTwoLogo
+        self.score = score
+    }
+    
     enum CodingKeys: String, CodingKey {
         case event_date
         case event_date_start

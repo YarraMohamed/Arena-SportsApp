@@ -13,7 +13,18 @@
 		C1F5ECA92DD7F3820032FFF3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C1F5ECA82DD7F3820032FFF3 /* Alamofire */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C199DC362DDD064D00B5B9D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1ADB9C72DD0DD1E007E8E35 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1ADB9CE2DD0DD1E007E8E35;
+			remoteInfo = Arena;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		C199DC322DDD064D00B5B9D7 /* ArenaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArenaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1ADB9CF2DD0DD1E007E8E35 /* Arena.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arena.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -28,6 +39,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		C199DC332DDD064D00B5B9D7 /* ArenaTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ArenaTests;
+			sourceTree = "<group>";
+		};
 		C1ADB9D12DD0DD1E007E8E35 /* SportsApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -39,6 +55,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C199DC2F2DDD064D00B5B9D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1ADB9CC2DD0DD1E007E8E35 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				C1ADB9D12DD0DD1E007E8E35 /* SportsApp */,
+				C199DC332DDD064D00B5B9D7 /* ArenaTests */,
 				C1ADB9D02DD0DD1E007E8E35 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				C1ADB9CF2DD0DD1E007E8E35 /* Arena.app */,
+				C199DC322DDD064D00B5B9D7 /* ArenaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,6 +97,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C199DC312DDD064D00B5B9D7 /* ArenaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C199DC3A2DDD064D00B5B9D7 /* Build configuration list for PBXNativeTarget "ArenaTests" */;
+			buildPhases = (
+				C199DC2E2DDD064D00B5B9D7 /* Sources */,
+				C199DC2F2DDD064D00B5B9D7 /* Frameworks */,
+				C199DC302DDD064D00B5B9D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C199DC372DDD064D00B5B9D7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				C199DC332DDD064D00B5B9D7 /* ArenaTests */,
+			);
+			name = ArenaTests;
+			packageProductDependencies = (
+			);
+			productName = ArenaTests;
+			productReference = C199DC322DDD064D00B5B9D7 /* ArenaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C1ADB9CE2DD0DD1E007E8E35 /* Arena */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1ADB9E22DD0DD1F007E8E35 /* Build configuration list for PBXNativeTarget "Arena" */;
@@ -108,6 +156,10 @@
 				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
+					C199DC312DDD064D00B5B9D7 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = C1ADB9CE2DD0DD1E007E8E35;
+					};
 					C1ADB9CE2DD0DD1E007E8E35 = {
 						CreatedOnToolsVersion = 16.3;
 					};
@@ -134,11 +186,19 @@
 			projectRoot = "";
 			targets = (
 				C1ADB9CE2DD0DD1E007E8E35 /* Arena */,
+				C199DC312DDD064D00B5B9D7 /* ArenaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C199DC302DDD064D00B5B9D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1ADB9CD2DD0DD1E007E8E35 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,6 +209,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C199DC2E2DDD064D00B5B9D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1ADB9CB2DD0DD1E007E8E35 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,7 +225,59 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C199DC372DDD064D00B5B9D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1ADB9CE2DD0DD1E007E8E35 /* Arena */;
+			targetProxy = C199DC362DDD064D00B5B9D7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		C199DC382DDD064D00B5B9D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ITI.ArenaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Arena.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Arena";
+				XROS_DEPLOYMENT_TARGET = 2.4;
+			};
+			name = Debug;
+		};
+		C199DC392DDD064D00B5B9D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ITI.ArenaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Arena.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Arena";
+				XROS_DEPLOYMENT_TARGET = 2.4;
+			};
+			name = Release;
+		};
 		C1ADB9E32DD0DD1F007E8E35 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -335,6 +454,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C199DC3A2DDD064D00B5B9D7 /* Build configuration list for PBXNativeTarget "ArenaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C199DC382DDD064D00B5B9D7 /* Debug */,
+				C199DC392DDD064D00B5B9D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C1ADB9CA2DD0DD1E007E8E35 /* Build configuration list for PBXProject "Arena" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

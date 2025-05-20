@@ -10,6 +10,9 @@ import Foundation
 struct PlayersResponse: Decodable {
     let result : [Player]?
     
+    init(result: [Player]) {
+        self.result = result
+    }
     enum CodingKeys: CodingKey {
         case result
     }
@@ -29,6 +32,13 @@ struct Player: Decodable {
     let playerName: String?
     let playerType: String? // Optional since it might be missing
     let playerImage: String?
+    
+    init(playerKey:Int, playerName:String, playerType:String, playerImage:String){
+        self.playerKey = playerKey
+        self.playerName = playerName
+        self.playerType = playerType
+        self.playerImage = playerImage
+    }
     
     enum CodingKeys: String, CodingKey {
         case player_image
