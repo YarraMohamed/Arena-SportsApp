@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C10B3B0D2DDBE97B00F79942 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = C10B3B0C2DDBE97B00F79942 /* Reachability */; };
+		C1CC83B32DDD1D1A005150DF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C1CC83B22DDD1D1A005150DF /* Lottie */; };
 		C1D9ACDA2DD92981004CD216 /* ShimmerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C1D9ACD92DD92981004CD216 /* ShimmerSwift */; };
 		C1D9ACDD2DD92992004CD216 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C1D9ACDC2DD92992004CD216 /* Kingfisher */; };
 		C1F5ECA92DD7F3820032FFF3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C1F5ECA82DD7F3820032FFF3 /* Alamofire */; };
@@ -66,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1CC83B32DDD1D1A005150DF /* Lottie in Frameworks */,
 				C1D9ACDD2DD92992004CD216 /* Kingfisher in Frameworks */,
 				C10B3B0D2DDBE97B00F79942 /* Reachability in Frameworks */,
 				C1D9ACDA2DD92981004CD216 /* ShimmerSwift in Frameworks */,
@@ -141,6 +143,7 @@
 				C1D9ACD92DD92981004CD216 /* ShimmerSwift */,
 				C1D9ACDC2DD92992004CD216 /* Kingfisher */,
 				C10B3B0C2DDBE97B00F79942 /* Reachability */,
+				C1CC83B22DDD1D1A005150DF /* Lottie */,
 			);
 			productName = SportsApp;
 			productReference = C1ADB9CF2DD0DD1E007E8E35 /* Arena.app */;
@@ -179,6 +182,7 @@
 				C1D9ACD82DD92981004CD216 /* XCRemoteSwiftPackageReference "ShimmerSwift" */,
 				C1D9ACDB2DD92992004CD216 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				C10B3B0B2DDBE97B00F79942 /* XCRemoteSwiftPackageReference "Reachability" */,
+				C1CC83B12DDD1D1A005150DF /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C1ADB9D02DD0DD1E007E8E35 /* Products */;
@@ -492,6 +496,14 @@
 				kind = branch;
 			};
 		};
+		C1CC83B12DDD1D1A005150DF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.1;
+			};
+		};
 		C1D9ACD82DD92981004CD216 /* XCRemoteSwiftPackageReference "ShimmerSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BeauNouvelle/ShimmerSwift";
@@ -523,6 +535,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C10B3B0B2DDBE97B00F79942 /* XCRemoteSwiftPackageReference "Reachability" */;
 			productName = Reachability;
+		};
+		C1CC83B22DDD1D1A005150DF /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1CC83B12DDD1D1A005150DF /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		C1D9ACD92DD92981004CD216 /* ShimmerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
