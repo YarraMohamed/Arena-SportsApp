@@ -59,7 +59,6 @@ class LeagueCell: UITableViewCell {
         let shimmerView = ShimmeringView(frame: contentView.bounds)
         shimmerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
-        // Create a placeholder copy of contentView if needed
         let placeholderView = UIView(frame: contentView.bounds)
         placeholderView.backgroundColor = UIColor(white: 0.9, alpha: 1)
         placeholderView.layer.cornerRadius = 10

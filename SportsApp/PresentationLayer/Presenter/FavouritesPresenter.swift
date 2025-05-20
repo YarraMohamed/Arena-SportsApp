@@ -34,6 +34,10 @@ class FavouritesPresenter {
         }
     }
     
+    func saveFav(favorite: Favourites){
+        useCase.saveFavourite(fav: favorite)
+    }
+    
     func deleteFav(id: Int){
         useCase.deleteFavourite(id: id)
     }
