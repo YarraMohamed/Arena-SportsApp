@@ -71,6 +71,7 @@ extension FavouritesViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavouritesCell
+        cell.delegate = self
         let item = sections[indexPath.section].items[indexPath.row]
         cell.favLabel.text = item.title
             cell.favImg.kf.setImage(with: URL(string: item.img), placeholder: UIImage(named: "leaguePlaceholder"))
@@ -184,4 +185,15 @@ extension FavouritesViewController  {
             sections.append(FavouriteSection(title: "Tennis", items: tennis))
         }
     }
+}
+
+extension FavouritesViewController: FavoriteCellDelegate {
+    func didTapFavorite(in cell: FavouritesCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let favorite = favs[indexPath.row]
+        print("Button tapped at row \(indexPath.row)")
+        print("Removed from favorites")
+        presenter.deleteFav(id: favorite.id)
+        favs.removeAll { $0.id == favorite.id }
+        }
 }
