@@ -115,49 +115,7 @@ extension FavouritesViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
-            let alert = UIAlertController(title: "Delete", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
-            
-            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (_) in
-                guard let self = self else { return }
-                
-                let itemToDelete = self.sections[indexPath.section].items[indexPath.row]
-                
-                if let index = self.favs.firstIndex(where: { $0.id == itemToDelete.id }) {
-                    self.favs.remove(at: index)
-                }
-                
-                self.sections[indexPath.section].items.remove(at: indexPath.row)
-                
-                
-                if self.sections[indexPath.section].items.isEmpty {
-                    self.sections.remove(at: indexPath.section)
-                    tableView.beginUpdates()
-                    tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
-                    tableView.endUpdates()
-                } else {
-                    tableView.beginUpdates()
-                    tableView.deleteRows(at: [indexPath], with: .fade)
-                    tableView.endUpdates()
-                }
-                
-                self.presenter.deleteFav(id: itemToDelete.id)
-                
-                if self.favs.isEmpty {
-                    self.tableView.isHidden = true
-                    self.img.isHidden = false
-                }
-                
-                self.tableView.reloadData()
-            }
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            
-            alert.addAction(deleteAction)
-            alert.addAction(cancelAction)
-            
-            self.present(alert, animated: true)
- 
+            showAlert(tableView, indexPath)
         }
     }
 
@@ -192,9 +150,8 @@ extension FavouritesViewController  {
     }
 }
 
-extension FavouritesViewController: FavoriteCellDelegate {
-    func didTapFavorite(in cell: FavouritesCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
+extension FavouritesViewController {
+    func showAlert(_ tableView: UITableView, _ indexPath: IndexPath){
         let alert = UIAlertController(title: "Delete", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (_) in
@@ -236,5 +193,12 @@ extension FavouritesViewController: FavoriteCellDelegate {
         alert.addAction(cancelAction)
         
         self.present(alert, animated: true)
+    }
+}
+
+extension FavouritesViewController: FavoriteCellDelegate {
+    func didTapFavorite(in cell: FavouritesCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        showAlert(tableView,indexPath)
     }
 }
