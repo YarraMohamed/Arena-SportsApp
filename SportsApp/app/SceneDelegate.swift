@@ -22,13 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UITabBar.appearance().tintColor = primaryColor
         UIButton.appearance().tintColor = primaryColor
 
-        let hasSeenOnboarding = UserDefaults.standard.bool(forKey: "hasSeenOnboarding")
-        
-        if hasSeenOnboarding {
-            goToMainView()
-        }else{
-            goToOnBoardingView()
-        }
+       
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
