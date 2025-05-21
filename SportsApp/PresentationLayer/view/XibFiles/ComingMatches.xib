@@ -22,13 +22,13 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Spf-lt-gk3">
                         <rect key="frame" x="20" y="55" width="70" height="70"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="Spf-lt-gk3" secondAttribute="height" multiplier="1:1" id="EYS-vo-gzf"/>
+                            <constraint firstAttribute="height" constant="70" id="EJZ-WT-PDg"/>
+                            <constraint firstAttribute="width" constant="70" id="ZCl-uK-7RR"/>
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CVA-BA-aRY">
                         <rect key="frame" x="239" y="55" width="70" height="70"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="CVA-BA-aRY" secondAttribute="height" multiplier="1:1" id="Nt6-cw-6IP"/>
                             <constraint firstAttribute="width" constant="70" id="g24-hu-7e7"/>
                             <constraint firstAttribute="height" constant="70" id="hSo-01-ng7"/>
                         </constraints>
