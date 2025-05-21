@@ -13,7 +13,7 @@ class PlayersViewController: UIViewController, PlayersProtocol{
     private var coach : Player?
     private var isLoadingPlayers = true
     
-    var sections : [String] = ["Coach", "Players"]
+    var sections : [String] = [NSLocalizedString("COACH_HEADER", comment: ""), NSLocalizedString("PLAYERS_HEADER", comment: "")]
     var presenter = PlayersPresenter(playersUsecase: PlayersUseCase(repo: PlayersRepository(service: PlayersService())))
     var sportId : Int?
     var teamId : Int?
