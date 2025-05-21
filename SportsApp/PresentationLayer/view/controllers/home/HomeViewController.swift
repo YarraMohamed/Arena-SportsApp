@@ -21,7 +21,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,
         header.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         header.layer.masksToBounds = true
         header.translatesAutoresizingMaskIntoConstraints = false
-        header.label.text = "Sports"
+        header.label.text = NSLocalizedString("SPORTS_HEADER", comment: "")
         view.addSubview(header)
         
         NSLayoutConstraint.activate([
@@ -54,16 +54,16 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,
         switch indexPath.row{
         case 0 :
             cell.gameImg.image = UIImage(named: "football")
-            cell.gameLabel.text = "Football"
+            cell.gameLabel.text = NSLocalizedString("FOOTBALL", comment: "")
         case 1 :
             cell.gameImg.image = UIImage(named: "basketball")
-            cell.gameLabel.text = "Basketball"
+            cell.gameLabel.text = NSLocalizedString("BASKETBALL", comment: "")
         case 2 :
             cell.gameImg.image = UIImage(named: "cricket")
-            cell.gameLabel.text = "Cricket"
+            cell.gameLabel.text = NSLocalizedString("CRICKET", comment: "")
         case 3:
             cell.gameImg.image = UIImage(named: "tennis")
-            cell.gameLabel.text = "Tennis"
+            cell.gameLabel.text = NSLocalizedString("TENNIS", comment: "")
         default:
             break
         }

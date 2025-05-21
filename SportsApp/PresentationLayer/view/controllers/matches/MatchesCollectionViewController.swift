@@ -34,9 +34,9 @@ class MatchesCollectionViewController: UICollectionViewController,
     
     private var sectionTitles: [String] {
         return [
-            "Upcoming Matches",
-            "Past Matches",
-            (sportId == 4 ? "Players" : "Teams")
+            NSLocalizedString("UPCOMING_MATCHES_HEADER", comment: ""),
+            NSLocalizedString("PAST_MATCHES_HEADER", comment: ""),
+            (sportId == 4 ? NSLocalizedString("PLAYERS_HEADER", comment: "") : NSLocalizedString("TEAMS_HEADER", comment: ""))
         ]
     }
     var presenter = MatchesPresenter(fixturesUsecase: FetchFixtures(repo: FixturesRepository(service: FixturesService())))

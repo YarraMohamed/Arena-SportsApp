@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  Arena
+
+  Created by MacBook on 21/05/2025.
+  
+*/
+
+"SPORTS_HEADER" = "Sports";
+
+"FOOTBALL" = "Football";
+
+"BASKETBALL" = "Basketball";
+
+"CRICKET" = "Cricket";
+
+"TENNIS" = "Tennis";
+
+"FAVORITES_HEADER" = "Favorites";
+
+"LEAGUES_HEADER" = "Leagues";
+
+"UPCOMING_MATCHES_HEADER" = "Upcoming Matches";
+
+"PAST_MATCHES_HEADER" = "Upcoming Matches";
+
+"TEAMS_HEADER" = "Teams";
+
+"PLAYERS_HEADER" = "Players";
+
+"COACH_HEADER" = "Coach";
+
+"ALERT_MSG" = "Are you sure you want to delete this item?";
+
+"DELETE" = "Delete";
+
+"CANCEL" = "Cancel";

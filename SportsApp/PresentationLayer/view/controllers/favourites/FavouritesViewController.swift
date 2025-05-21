@@ -32,7 +32,7 @@ class FavouritesViewController: UIViewController, FavouritesProtocol {
         header.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         header.layer.masksToBounds = true
         header.translatesAutoresizingMaskIntoConstraints = false
-        header.label.text = "Favourites"
+        header.label.text = NSLocalizedString("FAVORITES_HEADER", comment: "")
         view.addSubview(header)
         
         NSLayoutConstraint.activate([
@@ -136,25 +136,25 @@ extension FavouritesViewController  {
         let tennis = favs.filter { ![1, 2, 3].contains($0.map) }
 
         if !football.isEmpty {
-            sections.append(FavouriteSection(title: "Football", items: football))
+            sections.append(FavouriteSection(title: NSLocalizedString("FOOTBALL", comment: ""), items: football))
         }
         if !basketball.isEmpty {
-            sections.append(FavouriteSection(title: "Basketball", items: basketball))
+            sections.append(FavouriteSection(title: NSLocalizedString("BASKETBALL", comment: ""), items: basketball))
         }
         if !cricket.isEmpty {
-            sections.append(FavouriteSection(title: "Cricket", items: cricket))
+            sections.append(FavouriteSection(title: NSLocalizedString("CRICKET", comment: ""), items: cricket))
         }
         if !tennis.isEmpty {
-            sections.append(FavouriteSection(title: "Tennis", items: tennis))
+            sections.append(FavouriteSection(title: NSLocalizedString("TENNIS", comment: ""), items: tennis))
         }
     }
 }
 
 extension FavouritesViewController {
     func showAlert(_ tableView: UITableView, _ indexPath: IndexPath){
-        let alert = UIAlertController(title: "Delete", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("DELETE", comment: ""), message: NSLocalizedString("ALERT_MSG", comment: ""), preferredStyle: .alert)
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (_) in
+        let deleteAction = UIAlertAction(title: NSLocalizedString("DELETE", comment: ""), style: .destructive) { [weak self] (_) in
             guard let self = self else { return }
             
             let itemToDelete = self.sections[indexPath.section].items[indexPath.row]
@@ -187,7 +187,7 @@ extension FavouritesViewController {
             self.tableView.reloadData()
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil)
         
         alert.addAction(deleteAction)
         alert.addAction(cancelAction)

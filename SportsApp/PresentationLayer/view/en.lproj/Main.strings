@@ -1,0 +1,45 @@
+
+/* Class = "UITextView"; text = "See your favourites leagues matches schedules and teams!"; ObjectID = "1R4-Fl-0EG"; */
+"1R4-Fl-0EG.text" = "See your favourites leagues matches schedules and teams!";
+
+/* Class = "UIButton"; configuration.title = "Skip"; ObjectID = "PBM-R4-S3X"; */
+"PBM-R4-S3X.configuration.title" = "Skip";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PBM-R4-S3X"; */
+"PBM-R4-S3X.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Skip"; ObjectID = "UHS-R4-gMv"; */
+"UHS-R4-gMv.configuration.title" = "Skip";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "UHS-R4-gMv"; */
+"UHS-R4-gMv.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XB4-GN-Eep"; */
+"XB4-GN-Eep.text" = "Label";
+
+/* Class = "UILabel"; text = "Premier League"; ObjectID = "czr-3W-epU"; */
+"czr-3W-epU.text" = "Premier League";
+
+/* Class = "UILabel"; text = "Cristiano Ronaldo"; ObjectID = "eLl-Ud-WH1"; */
+"eLl-Ud-WH1.text" = "Cristiano Ronaldo";
+
+/* Class = "UITextView"; text = "Add Any league to your Favourite List!"; ObjectID = "fSD-1I-1j4"; */
+"fSD-1I-1j4.text" = "Add Any league to your Favourite List!";
+
+/* Class = "UITextView"; text = "Welcome to SportsApp\nLet’s explore together!"; ObjectID = "fuB-tI-jEx"; */
+"fuB-tI-jEx.text" = "Welcome to SportsApp\nLet’s explore together!";
+
+/* Class = "UILabel"; text = "Forward"; ObjectID = "hAM-vL-FOj"; */
+"hAM-vL-FOj.text" = "Forward";
+
+/* Class = "UIButton"; configuration.title = "Skip"; ObjectID = "uvN-l6-CRV"; */
+"uvN-l6-CRV.configuration.title" = "Skip";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "uvN-l6-CRV"; */
+"uvN-l6-CRV.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "vNJ-a0-oPq"; */
+"vNJ-a0-oPq.text" = "Label";
+
+/* Class = "UILabel"; text = "England"; ObjectID = "vxG-nA-lvK"; */
+"vxG-nA-lvK.text" = "England";

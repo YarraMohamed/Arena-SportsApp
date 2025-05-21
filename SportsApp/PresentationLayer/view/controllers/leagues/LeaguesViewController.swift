@@ -22,7 +22,7 @@ class LeaguesViewController: UIViewController, FavouritesProtocol{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Leagues"
+        title = NSLocalizedString("LEAGUES_HEADER", comment: "")
         tableView.dataSource = self
         tableView.delegate = self
 //        setupSearchController()
