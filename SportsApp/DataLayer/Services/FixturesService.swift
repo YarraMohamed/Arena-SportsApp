@@ -8,15 +8,13 @@
 import Foundation
 import Alamofire
 
-private let API_KEY = "978223e2ba1414ad957ef3bb3083dde031b4400d4b2c4d9ed6b42fb8c30cb5b3"
-
 class FixturesService : FixtureServiceProtocol {
     
     func fetchFixturesFromAPI(map:Int,from: String, to: String, leagueId: String, completion: @escaping (FixturesResponse?, Error?) -> Void) {
         let url = urlMapper(id: map)
         let parameters: Parameters = [
             "met": "Fixtures",
-            "APIkey": API_KEY,
+            "APIkey": Constants.apiKey,
             "from": from,
             "to": to,
             "leagueId": leagueId
