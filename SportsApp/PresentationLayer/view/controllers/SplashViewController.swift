@@ -14,7 +14,7 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        animationView = LottieAnimationView(name: "lottie")
+        animationView = LottieAnimationView(name: AppStrings.Animation.lottie)
                 animationView?.frame = view.bounds
                 animationView?.contentMode = .scaleAspectFit
                 animationView?.loopMode = .playOnce
@@ -31,7 +31,7 @@ class SplashViewController: UIViewController {
        }
     
     private func naviagteToOtherSceeen() {
-        let hasSeenOnboarding = UserDefaults.standard.bool(forKey: "hasSeenOnboarding")
+        let hasSeenOnboarding = UserDefaults.standard.bool(forKey: StoryboardIDs.hasSeenOnboarding)
         
         if hasSeenOnboarding {
             goToMainView()

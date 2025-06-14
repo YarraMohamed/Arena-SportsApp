@@ -8,9 +8,6 @@
 import Foundation
 import Alamofire
 
-
-private let API_KEY = "978223e2ba1414ad957ef3bb3083dde031b4400d4b2c4d9ed6b42fb8c30cb5b3"
-
 class TeamsService : TeamsServiceProtocol {
     func fetchTeamsFromAPI(map: Int, leagueId: Int, completion: @escaping (TeamsResponse?, Error?) -> Void) {
         let url = urlMapper(id: map)
@@ -18,8 +15,7 @@ class TeamsService : TeamsServiceProtocol {
         let parameters: Parameters = [
             "met": "Teams",
             "leagueId": leagueId,
-            "APIkey": API_KEY
-        ]
+            "APIkey": AppConstants.apiKey        ]
                 AF.request(url,parameters: parameters)
                     .validate()
                     .responseDecodable(of: TeamsResponse.self) { response in

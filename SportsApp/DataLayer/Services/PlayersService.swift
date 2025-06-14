@@ -8,8 +8,6 @@
 import Foundation
 import Alamofire
 
-private let API_KEY = "978223e2ba1414ad957ef3bb3083dde031b4400d4b2c4d9ed6b42fb8c30cb5b3"
-
 class PlayersService : PlayersServiceProtocol{
     
     func fetchPlayersFromAPI(map: Int, teamId: Int, completion: @escaping (PlayersResponse?, Error?) -> Void) {
@@ -18,7 +16,7 @@ class PlayersService : PlayersServiceProtocol{
         let parameters: Parameters = [
             "met": "Players",
             "teamId": teamId,
-            "APIkey": API_KEY
+            "APIkey": AppConstants.apiKey
         ]
         AF.request(url,parameters: parameters)
             .validate()
@@ -38,8 +36,7 @@ class PlayersService : PlayersServiceProtocol{
         let parameters: Parameters = [
             "met": "Players",
             "leagueId": leagueId,
-            "APIkey": API_KEY
-        ]
+            "APIkey": AppConstants.apiKey        ]
         AF.request(url,parameters: parameters)
             .validate()
             .responseDecodable(of: PlayersResponse.self) { response in

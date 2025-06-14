@@ -11,18 +11,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
+        configureGlobalAppearance()
         
-        let primaryColor = UIColor(named: "primaryColor") ?? #colorLiteral(red: 0.4487758875, green: 0.4389013052, blue: 0.9776882529, alpha: 1)
-
-        UINavigationBar.appearance().tintColor = primaryColor
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: primaryColor]
-        UITabBar.appearance().tintColor = primaryColor
-        UIButton.appearance().tintColor = primaryColor
-
-       
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -52,7 +44,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+    
+    private func configureGlobalAppearance() {
+            let primaryColor = AppColors.primaryColor
 
+            UINavigationBar.appearance().tintColor = primaryColor
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: primaryColor]
+            UITabBar.appearance().tintColor = primaryColor
+            UIButton.appearance().tintColor = primaryColor
+        }
 
 }
+
+
 
