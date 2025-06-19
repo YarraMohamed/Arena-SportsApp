@@ -219,7 +219,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="aoC-ah-HDV">
-                                                    <rect key="frame" x="350" y="37" width="23" height="23"/>
+                                                    <rect key="frame" x="350" y="36" width="23" height="25"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -323,18 +323,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBM-R4-S3X">
-                                <rect key="frame" x="325" y="144" width="57" height="39"/>
+                                <rect key="frame" x="325" y="144" width="57" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Skip"/>
                                 <connections>
                                     <action selector="skipAction:" destination="hv6-h4-dhN" eventType="touchUpInside" id="VuD-GT-n4I"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="250" image="screen3" translatesAutoresizingMaskIntoConstraints="NO" id="ACo-8I-aDF">
-                                <rect key="frame" x="40.333333333333343" y="213.00000000000003" width="321.33333333333326" height="349.66666666666674"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="250" image="screen3" translatesAutoresizingMaskIntoConstraints="NO" id="ACo-8I-aDF">
+                                <rect key="frame" x="40.333333333333343" y="208.33333333333334" width="321.33333333333326" height="349.66666666666663"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Add Any league to your Favourite List!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fSD-1I-1j4">
-                                <rect key="frame" x="40.333333333333343" y="582.66666666666663" width="321.33333333333326" height="80"/>
+                                <rect key="frame" x="40.333333333333343" y="578" width="321.33333333333326" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="wcH-fx-R2V"/>
@@ -372,18 +372,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvN-l6-CRV">
-                                <rect key="frame" x="325" y="144" width="57" height="39"/>
+                                <rect key="frame" x="325" y="144" width="57" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Skip"/>
                                 <connections>
                                     <action selector="skipAction:" destination="dmc-P4-TZw" eventType="touchUpInside" id="eUp-5l-wkP"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="250" image="screen2" translatesAutoresizingMaskIntoConstraints="NO" id="aSz-kP-NS6">
-                                <rect key="frame" x="40.333333333333343" y="213.00000000000003" width="321.33333333333326" height="349.66666666666674"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="250" image="screen2" translatesAutoresizingMaskIntoConstraints="NO" id="aSz-kP-NS6">
+                                <rect key="frame" x="40.333333333333343" y="208.33333333333334" width="321.33333333333326" height="349.66666666666663"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="See your favourites leagues matches schedules and teams!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1R4-Fl-0EG">
-                                <rect key="frame" x="40.333333333333343" y="582.66666666666663" width="321.33333333333326" height="100"/>
+                                <rect key="frame" x="40.333333333333343" y="578" width="321.33333333333326" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="dkL-qo-Dh4"/>
@@ -421,18 +421,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHS-R4-gMv">
-                                <rect key="frame" x="325" y="144" width="57" height="39"/>
+                                <rect key="frame" x="325" y="144" width="57" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Skip"/>
                                 <connections>
                                     <action selector="skipAction:" destination="LaU-pf-0WU" eventType="touchUpInside" id="mz7-5z-Fyu"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="250" image="screen1" translatesAutoresizingMaskIntoConstraints="NO" id="t6x-IQ-be0">
-                                <rect key="frame" x="40.333333333333343" y="213.00000000000003" width="321.33333333333326" height="349.66666666666674"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="250" image="screen1" translatesAutoresizingMaskIntoConstraints="NO" id="t6x-IQ-be0">
+                                <rect key="frame" x="40.333333333333343" y="208.33333333333334" width="321.33333333333326" height="349.66666666666663"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fuB-tI-jEx">
-                                <rect key="frame" x="40.333333333333343" y="582.66666666666663" width="321.33333333333326" height="80"/>
+                                <rect key="frame" x="40.333333333333343" y="578" width="321.33333333333326" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="ARV-oA-D8A"/>
@@ -489,13 +489,13 @@ Let’s explore together!</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forward" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAM-vL-FOj">
-                                                    <rect key="frame" x="126" y="59" width="256" height="21"/>
+                                                    <rect key="frame" x="126" y="60" width="256" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cristiano Ronaldo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLl-Ud-WH1">
-                                                    <rect key="frame" x="126" y="30" width="256" height="23"/>
+                                                    <rect key="frame" x="126" y="31" width="256" height="23"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

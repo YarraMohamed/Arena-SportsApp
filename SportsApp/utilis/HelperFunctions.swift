@@ -10,8 +10,8 @@ import UIKit
 
 func goToMainView(){
     let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-    let mainVC = UIStoryboard(name: "Main", bundle: nil)
-        .instantiateViewController(withIdentifier: "tabBar")
+    let mainVC = UIStoryboard(name: StoryboardIDs.main, bundle: nil)
+        .instantiateViewController(withIdentifier: AppTabBarItems.tabBar)
     
     if let window = windowScene?.windows.first {
         window.rootViewController = mainVC
@@ -21,8 +21,8 @@ func goToMainView(){
 
 func goToOnBoardingView(){
     let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-    let mainVC = UIStoryboard(name: "Main", bundle: nil)
-        .instantiateViewController(withIdentifier: "onBoarding")
+    let mainVC = UIStoryboard(name: StoryboardIDs.main, bundle: nil)
+        .instantiateViewController(withIdentifier: StoryboardIDs.onBoarding)
     
     if let window = windowScene?.windows.first {
         window.rootViewController = mainVC
@@ -32,14 +32,14 @@ func goToOnBoardingView(){
 
 func currentDateFormatter() -> String {
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd"
+    formatter.dateFormat = AppStrings.General.dateFormat
     let dateTimeString = formatter.string(from: Date())
     return dateTimeString
 }
 
 func futureDateFormatter() -> String{
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd"
+    formatter.dateFormat = AppStrings.General.dateFormat
 
     if let oneYearLater = Calendar.current.date(byAdding: .year, value: 1, to: Date()) {
         let formatted = formatter.string(from: oneYearLater)
@@ -50,7 +50,7 @@ func futureDateFormatter() -> String{
 
 func pastDateFormatter() -> String{
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd"
+    formatter.dateFormat = AppStrings.General.dateFormat
 
     if let oneYearLater = Calendar.current.date(byAdding: .day, value: -1, to: Date()) {
         let formatted = formatter.string(from: oneYearLater)
@@ -61,7 +61,7 @@ func pastDateFormatter() -> String{
 
 func pastYearDataFormatter() -> String{
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd"
+    formatter.dateFormat = AppStrings.General.dateFormat
 
     if let oneYearLater = Calendar.current.date(byAdding: .year, value: -1, to: Date()) {
         let formatted = formatter.string(from: oneYearLater)
@@ -73,12 +73,12 @@ func pastYearDataFormatter() -> String{
 func urlMapper(id:Int) ->String{
     switch id{
     case 1:
-        return "https://apiv2.allsportsapi.com/football"
+        return API.url(for: API.Endpoint.football)
     case 2:
-        return "https://apiv2.allsportsapi.com/basketball"
+        return API.url(for: API.Endpoint.basketball)
     case 3:
-        return "https://apiv2.allsportsapi.com/cricket"
+        return API.url(for: API.Endpoint.cricket)
     default :
-        return "https://apiv2.allsportsapi.com/tennis"
+        return API.url(for: API.Endpoint.tennis)
     }
 }

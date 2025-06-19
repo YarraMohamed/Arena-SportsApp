@@ -22,10 +22,10 @@ class LeaguesViewController: UIViewController, FavouritesProtocol{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = NSLocalizedString("LEAGUES_HEADER", comment: "")
+        title = L10n.Common.leagues_header
         tableView.dataSource = self
         tableView.delegate = self
-//        setupSearchController()
+        //setupSearchController()
         
         presenter.setTableView(self)
         presenter.getLeagues(map: sportId ?? 1)
@@ -46,7 +46,7 @@ class LeaguesViewController: UIViewController, FavouritesProtocol{
     
     func setupSearchController() {
         searchController = UISearchController(searchResultsController: nil)
-        self.searchController?.searchBar.placeholder = "Search Leagues"
+        self.searchController?.searchBar.placeholder = AppStrings.General.search_leagues
         self.navigationItem.searchController = searchController
         self.searchController?.hidesNavigationBarDuringPresentation = false
         self.searchController?.obscuresBackgroundDuringPresentation = false
@@ -77,7 +77,7 @@ extension LeaguesViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "leagueCell", for: indexPath) as! LeagueCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.leagueCell, for: indexPath) as! LeagueCell
         if isLoadingLeagues {
             cell.startShimmeringAll()
             cell.leagueTitleLabel.text = ""
@@ -87,7 +87,7 @@ extension LeaguesViewController : UITableViewDataSource{
             cell.delegate = self
             cell.leagueTitleLabel.text = leagues[indexPath.row].leagueName
             cell.leagueTopTeamLabel.text = leagues[indexPath.row].countryName
-            cell.leagueImageView.kf.setImage(with: URL(string: leagues[indexPath.row].leagueLogo ?? "https://static.becharge.be/img/be/placeholder.png"), placeholder: UIImage(named: "leaguePlaceholder"))
+            cell.leagueImageView.kf.setImage(with: URL(string: leagues[indexPath.row].leagueLogo ?? AppStrings.PlaceholderImageNames.leagueLogo), placeholder: UIImage(named: AppStrings.ImageNames.leaguePlaceholder))
             
             let league = leagues[indexPath.row]
             let isFavorite = favoriteLeagues.contains {
@@ -106,7 +106,7 @@ extension LeaguesViewController : UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "matchesScreen") as! MatchesCollectionViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIDs.matchesScreen) as! MatchesCollectionViewController
         vc.selectedLeagueTitle = leagues[indexPath.row].leagueName
         vc.sportId = sportId
         vc.leagueId = leagues[indexPath.row].leagueKey
