@@ -7,8 +7,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "cell"
-
 class HomeViewController: UIViewController,UICollectionViewDelegate,
                           UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     @IBOutlet weak var collectionView: UICollectionView!
@@ -16,12 +14,12 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let header = Bundle.main.loadNibNamed("Header", owner: self, options: nil)?.first as! Header
+        let header = Bundle.main.loadNibNamed(CellIdentifiers.header, owner: self, options: nil)?.first as! Header
         header.layer.cornerRadius = 60
         header.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         header.layer.masksToBounds = true
         header.translatesAutoresizingMaskIntoConstraints = false
-        header.label.text = NSLocalizedString("SPORTS_HEADER", comment: "")
+        header.label.text = L10n.Common.sports_header
         view.addSubview(header)
         
         NSLayoutConstraint.activate([
@@ -45,7 +43,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
         cell.layer.cornerRadius = 16
         cell.layer.masksToBounds = true
         cell.gameLabel.layer.cornerRadius = 16
@@ -53,17 +51,17 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,
         
         switch indexPath.row{
         case 0 :
-            cell.gameImg.image = UIImage(named: "football")
-            cell.gameLabel.text = NSLocalizedString("FOOTBALL", comment: "")
+            cell.gameImg.image = UIImage(named: AppStrings.GameNames.football)
+            cell.gameLabel.text = L10n.Games.FOOTBALL
         case 1 :
-            cell.gameImg.image = UIImage(named: "basketball")
-            cell.gameLabel.text = NSLocalizedString("BASKETBALL", comment: "")
+            cell.gameImg.image = UIImage(named: AppStrings.GameNames.basketball)
+            cell.gameLabel.text = L10n.Games.BASKETBALL
         case 2 :
-            cell.gameImg.image = UIImage(named: "cricket")
-            cell.gameLabel.text = NSLocalizedString("CRICKET", comment: "")
+            cell.gameImg.image = UIImage(named: AppStrings.GameNames.cricket)
+            cell.gameLabel.text = L10n.Games.CRICKET
         case 3:
-            cell.gameImg.image = UIImage(named: "tennis")
-            cell.gameLabel.text = NSLocalizedString("TENNIS", comment: "")
+            cell.gameImg.image = UIImage(named: AppStrings.GameNames.tennis)
+            cell.gameLabel.text = L10n.Games.TENNIS
         default:
             break
         }
@@ -84,7 +82,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "leaguesVC") as! LeaguesViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: StoryboardIDs.leaguesVC) as! LeaguesViewController
         vc.hidesBottomBarWhenPushed = true
         vc.sportId = indexPath.row + 1
         self.navigationController?.pushViewController(vc, animated: true)

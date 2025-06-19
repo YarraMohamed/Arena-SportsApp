@@ -15,7 +15,7 @@ enum AppStrings {
         static let loading = "Loading..."
         static let dateFormat = "yyyy-MM-dd"
         static let defaultConfiguration = "Default Configuration"
-        
+        static let search_leagues = "Search Leagues"
     }
     
     enum Errors {
@@ -28,4 +28,25 @@ enum AppStrings {
         
     }
     
+    enum Localization {
+        static let english = "English"
+        static let french = "Français"
+    }
+    
+    enum GameNames {
+        static let football = "football"
+        static let basketball = "basketball"
+        static let cricket = "cricket"
+        static let tennis = "tennis"
+        
+    }
+    
+    enum ImageNames{
+        static let leaguePlaceholder = "leaguePlaceholder"
+    }
+    
+    enum PlaceholderImageNames{
+        static let leagueLogo = "https://static.becharge.be/img/be/placeholder.png"
+        
+    }
 }

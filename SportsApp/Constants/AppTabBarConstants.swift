@@ -6,8 +6,7 @@
 //
 
 import Foundation
-enum AppTabBarItems {
-    
-    static let tabBar = "tabBar"
 
+enum AppTabBarItems {
+    static let tabBar = "tabBar"
 }
